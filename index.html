@@ -1,76 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fresh Graduate Portfolio">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Chenji - Portfolio</title>
+    <style>
+        body {
+            
+            background-color: #1e1e1e;
+            color: white;
+            #font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        header {
+            background: linear-gradient(to right, #0073e6, #0047ab);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            background-color: #111;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+            cursor: pointer;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.2s, color 0.2s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: white;
+            color: black;
+            transform: scale(1.1);
+        }
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 30px;
+            height: 25px;
+        }
+        .menu-icon div {
+            background-color: white;
+            height: 4px;
+            width: 100%;
+            border-radius: 2px;
+        }
+        .menu-active {
+            display: flex !important;
+        }
+        .container {
+            padding: 20px;
+        }
+        footer {
+            background: linear-gradient(to right, #0047ab, #0073e6);
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Media query for mobile responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: #111;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                padding: 10px 0;
+            }
+            nav ul li {
+                margin: 15px 0;
+            }
+            .menu-icon {
+                display: flex;
+            }
+            nav ul li a {
+                padding: 10px 20px;
+            }
+        }
+
+        /* Resume Section */
+        .resume-section {
+            background-color: #333;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .resume-section h2 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .resume-link {
+            font-size: 1.2rem;
+            color: #00aaff;
+            text-decoration: none;
+            border: 2px solid #00aaff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .resume-link:hover {
+            background-color: #00aaff;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <header>
+    <header>
+        <h1>SANDEEP CHENJI</h1>
+        <p>Web Developer and Software Engineer</p>
+    </header>
     <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+        <div class="logo">
+            <a href="#"><img src="content://com.android.providers.media.documents/document/image%3A1000021804" alt="Logo"></a>
+        </div>
+        <ul id="menu">
+            <li><a href="#about" onclick="showTab('about')">About</a></li>
+            <li><a href="#projects" onclick="showTab('projects')">Projects</a></li>
+            <li><a href="#skills" onclick="showTab('skills')">Skills</a></li>
+            <li><a href="#resume" onclick="showTab('resume')">Resume</a></li>
+            <li><a href="#contact" onclick="showTab('contact')">Contact</a></li>
+            <li><a href="#hobbies" onclick="showTab('hobbies')">Hobbies</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </nav>
-  </header>
 
-  <!-- Home Section -->
-  <section id="home">
-    <div class="intro">
-      <h1>Welcome to My Portfolio</h1>
-      <p>Hi, I'm <b>CHENJI SANDEEP</b>, a passionate <b>3rd-year B.Tech Computer Science and Engineering</b> student.".</p>
-      <p>I am looking to grow as a java developer,wed developer.</p>
+    <div class="container">
+        <section id="about" class="tab-content active">
+            <h2>About Me</h2>
+            <p>I am SANDEEP CHENJI from Venkatagiri. Currently studying 3rd B.Tech at Narayana Engineering College, Gudur, as a CSE student. Very eager to apply my tech skills in real-world projects. I am also a prompt engineer and created this site using Copilot.</p>
+        </section>
+        <section id="projects" class="tab-content">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Portfolio</h3>
+                <p>This is my first project, which showcases my skills and abilities as a web developer and software engineer. The portfolio site includes detailed information about my background, education, and projects. It serves as a dynamic and interactive resume, highlighting my journey and achievements.</p>
+                <p><strong>Technologies Used:</strong> HTML, CSS, and JavaScript</p>
+            </div>
+        </section>
+        <section id="skills" class="tab-content">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Java</li>
+                <li>Python with Data Science</li>
+            </ul>
+        </section>
+        <section id="resume" class="tab-content">
+            <div class="resume-section">
+                <h2>Resume</h2>
+                <a href="path/to/your_resume.pdf" class="resume-link" target="_blank">Download My Resume (PDF)</a>
+            </div>
+        </section>
+        <section id="contact" class="tab-content">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:chenjisandeepp@gmail.com" style="color: white;">chenjisandeepp@gmail.com</a></p>
+            <p>Phone: 8688023831</p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/chenjisandeep" style="color: white;">linkedin.com/in/chenjisandeep</a></p>
+        </section>
+        <section id="hobbies" class="tab-content">
+            <h2>Hobbies and Interests</h2>
+            <ul>
+                <li>Reading books</li>
+                <li>Playing cricket</li>
+                <li>Coding</li>
+            </ul>
+        </section>
     </div>
-  </section>
 
-  <!-- About Me Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a studying in <b>Computer Science and Engineering</b> from <b>NARAYANA ENGINEERING COLLEGE,GUDUR</b>. I'm excited to start my career in software development. I have a strong interest in building scalable applications, problem-solving, and working with emerging technologies like cloud computing and machine learning. I have worked on various projects, including web applications and data analysis tools, that demonstrate my skills and passion for coding.".</p>
-    <h3>Education</h3>
-    <p>INTERMEDIATE, AMARAVATHI JUNIOR COLLEGE,VENKATAGIRI, 2022</p>
-    <p>Courses: <b>JAVA,PYTHON,DSA</b></p>
-  </section>
+    <footer>
+        <p>&copy; 2025 Sandeep Chenji. All rights reserved.</p>
+    </footer>
 
-  <!-- Projects Section 
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="project">
-      <h3>Project Title 1</h3>
-      <p>Description of the project, technologies used, and your role in it.</p>
-      <a href="project-link" target="_blank">View Project</a>
-    </div>
-    <div class="project">
-      <h3>Project Title 2</h3>
-      <p>Description of the project, technologies used, and your role in it.</p>
-      <a href="project-link" target="_blank">View Project</a>
-    </div>
-    <div class="project">
-      <h3>Project Title 3</h3>
-      <p>Description of the project, technologies used, and your role in it.</p>
-      <a href="project-link" target="_blank">View Project</a>
-    </div>
-  </section>
--->
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you would like to get in touch with me, feel free to reach out via the following methods:</p>
-    <ul>
-      <li>Email: chenjisandeepp@gmail.com</li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/chenjisandeep" target="_blank">Your LinkedIn Profile</a></li>
-    </ul>
-  </section>
+    <script>
+        function showTab(tabId) {
+            var tabs = document.getElementsByClassName('tab-content');
+            var links = document.querySelectorAll('nav ul li a');
+            
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            for (var i = 0; i < links.length; i++) {
+                links[i].classList.remove('active');
+            }
+            
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`a[href='#${tabId}']`).classList.add('active');
+        }
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 [Your Name]. All Rights Reserved.</p>
-  </footer>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('menu-active');
+        }
+    </script>
 </body>
 </html>
