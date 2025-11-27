@@ -1,937 +1,531 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sandeep Chenji | Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Segoe UI", sans-serif;
-        background: #1e1e1e;
-        color: #fff;
-        scroll-behavior: smooth;
-        transition: 0.3s;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      h1,
-      h2,
-      h3 {
-        color: #00bfff;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sandeep Chenji — Portfolio</title>
 
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(30, 30, 30, 0.95);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 40px;
-        z-index: 1000;
-      }
-      .logo {
-        font-size: 22px;
-        font-weight: bold;
-        color: #00bfff;
-      }
-      .nav-links {
-        display: flex;
-        gap: 20px;
-      }
-      .nav-links a {
-        font-weight: 500;
-        transition: 0.3s;
-      }
-      .nav-links a.active,
-      .nav-links a:hover {
-        color: #00bfff;
-      }
-      .toggle-btn {
-        cursor: pointer;
-        font-size: 18px;
-        padding: 6px 10px;
-        border-radius: 5px;
-        border: 1px solid #00bfff;
-        color: #00bfff;
-      }
+  <!-- Google font + Font Awesome (icons) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-      /* Mobile menu button (hidden on desktop) */
-      .menu-btn {
-        display: none;
-        font-size: 20px;
-        background: transparent;
-        border: none;
-        color: #00bfff;
-        cursor: pointer;
-        padding: 6px;
-      }
+  <meta name="description" content="Sandeep Chenji — Computer Science student & Software Developer. Java, Web, Projects, Contact.">
 
-      section {
-        min-height: 100vh;
-        padding: 100px 20px;
-        background-size: 200% 200%;
-        transition: background-position 0.2s ease-out;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
+  <style>
+    :root{
+      --bg:#0f1720; --card:#0f1726; --muted:#9aa4b2; --accent:#00bfff; --glass: rgba(255,255,255,0.04);
+      --radius:14px; --max-width:1100px;
+      --ease:cubic-bezier(.2,.9,.3,1);
+      --text:#e6eef6;
+      --shadow: 0 6px 30px rgba(2,6,23,0.6);
+    }
 
-      /* Section backgrounds */
-      #hero {
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        align-items: center;
-        text-align: center;
-      }
-      #about {
-        background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
-      }
-      #education {
-        background: linear-gradient(135deg, #2b2b2b, #3b3b3b);
-      }
-      #skills {
-        background: linear-gradient(135deg, #111, #444);
-      }
-      #projects {
-        background: linear-gradient(135deg, #0d0d0d, #262626);
-      }
-      #strengths {
-        background: linear-gradient(135deg, #1a1a1a, #333);
-      }
-      #contact {
-        background: linear-gradient(135deg, #000, #1a1a1a);
-      }
+    /* Light theme variables will be toggled on body.light */
+    body.light{
+      --bg:#f7fbff; --card:#ffffff; --muted:#5b6b7a; --accent:#006fbf; --glass: rgba(4,17,30,0.03);
+      --text:#07101a; --shadow: 0 8px 34px rgba(12,30,50,0.08);
+    }
 
-      /* Hero */
-      #hero h1 {
-        font-size: 48px;
-        color: #00bfff;
-      }
-      #hero p {
-        font-size: 18px;
-        margin-top: 10px;
-        color: #0f0f0f;
-      }
-      #hero img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        margin-bottom: 20px;
-      }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:var(--bg);
+      color:var(--text); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-      /* Buttons */
-      .btn {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 12px 25px;
-        background: #00bfff;
-        border: none;
-        border-radius: 25px;
-        color: #fff;
-        font-weight: bold;
-        cursor: pointer;
-      }
+    /* Layout container */
+    .wrap{max-width:var(--max-width); margin:0 auto; padding:28px 20px;}
 
-      .container {
-        max-width: 1000px;
-        margin: auto;
-      }
+    /* NAV */
+    header{
+      position:sticky; top:12px; z-index:80; display:flex; justify-content:space-between; align-items:center;
+      margin:0 auto; max-width:var(--max-width); padding:8px 20px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; cursor:pointer;}
+    .brand .logo{
+      width:48px; height:48px; border-radius:12px; display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--accent), #6ef1ff); color:#001; font-weight:800; font-size:18px;
+      box-shadow: var(--shadow);
+    }
+    .brand .name{font-weight:700; letter-spacing:0.2px}
+    nav{display:flex; gap:18px; align-items:center}
+    .nav-links{display:flex; gap:14px; align-items:center}
+    .nav-links a{
+      color:var(--text); padding:8px 12px; border-radius:10px; font-weight:600; font-size:15px;
+      transition:all .22s var(--ease);
+    }
+    .nav-links a:hover, .nav-links a.active{ background:var(--glass); color:var(--accent) }
 
-      .cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-      }
+    /* Mobile menu button */
+    .menu-toggle{display:none; background:transparent; border:1px solid transparent; color:var(--text); padding:8px; border-radius:8px;}
+    .theme-toggle{background:transparent; border:1px solid var(--glass); padding:8px; border-radius:10px; cursor:pointer; color:var(--text)}
 
-      .card {
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 12px;
-        padding: 20px;
-        flex: 1 1 280px;
-        transition: 0.3s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-      }
-      .card img {
-        display: block;
-        margin-bottom: 10px;
-        max-width: 250px;
-        border-radius: 20px;
-      }
+    /* HERO */
+    .hero{
+      display:grid; gap:16px; align-items:center; grid-template-columns:1fr;
+      margin:28px auto 34px; padding:28px; border-radius:var(--radius); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      box-shadow:var(--shadow);
+    }
+    .hero-inner{display:flex; gap:20px; align-items:center; flex-wrap:wrap}
+    .avatar{
+      width:140px; height:140px; border-radius:20px; flex-shrink:0; overflow:hidden; box-shadow: 0 10px 30px rgba(2,6,23,0.5);
+      border: 3px solid rgba(255,255,255,0.05);
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
+    .hero-text h1{font-size:26px; margin:0 0 6px}
+    .hero-text p.lead{margin:0 0 12px; color:var(--muted)}
+    .roles{font-weight:700; color:var(--accent); display:inline-block; min-height:22px}
 
-      /* About Section */
-      #about .container {
-        display: flex;
-        gap: 30px;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-      #about img {
-        max-width: 400px;
-        border-radius: 20px;
-      }
+    .hero-ctas{display:flex; gap:10px; margin-top:6px; flex-wrap:wrap}
+    .btn{background:var(--accent); color:#001; border:0; padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer; transition:all .22s var(--ease)}
+    .btn.ghost{background:transparent; color:var(--text); border:1px solid var(--glass)}
 
-      footer {
-        text-align: center;
-        padding: 30px;
-        background: #111;
-        color: #888;
-      }
-      footer a {
-        margin: 0 10px;
-        color: #fff;
-      }
-      footer a:hover {
-        color: #00bfff;
-      }
+    /* SECTIONS */
+    section{margin:28px 0; padding:18px; border-radius:12px}
+    .section-title{display:flex; align-items:center; gap:12px; font-weight:800; margin-bottom:14px}
+    .card{background:var(--card); border-radius:12px; padding:18px; box-shadow:var(--shadow)}
 
-      /* Light mode */
-      body.light-mode {
-        color: #111;
-      }
-      body.light-mode nav {
-        background: #fff;
-      }
-      body.light-mode .card {
-        background: #e0e0e0;
-        color: #111;
-      }
-      body.light-mode .toggle-btn {
-        color: #111;
-        border-color: #111;
-      }
-      body.light-mode #hero {
-        background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-        color: #111;
-      }
-      body.light-mode #about {
-        background: #f2f2f2;
-        color: #111;
-      }
-      body.light-mode #education {
-        background: #e6e6e6;
-        color: #111;
-      }
-      body.light-mode #skills {
-        background: #d9d9d9;
-        color: #111;
-      }
-      body.light-mode #projects {
-        background: #cccccc;
-        color: #111;
-      }
-      body.light-mode #strengths {
-        background: #bfbfbf;
-        color: #111;
-      }
-      body.light-mode #contact {
-        background: #b3b3b3;
-        color: #111;
-      }
+    /* ABOUT / SKILLS layout */
+    .grid{display:grid; gap:18px}
+    .cols-2{grid-template-columns: 360px 1fr}
+    @media (max-width:880px){ .cols-2{grid-template-columns:1fr} }
 
-      /* ---------------------------
-         RESPONSIVE / MOBILE RULES
-         --------------------------- */
+    /* Skill bars */
+    .skill{margin-bottom:12px}
+    .skill .meta{display:flex; justify-content:space-between; font-weight:600; color:var(--muted); margin-bottom:6px}
+    .progress{height:12px; background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius:999px; overflow:hidden}
+    .progress > i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--accent), #6ef1ff); border-radius:inherit; transition:width .9s var(--ease)}
 
-      /* General small screens */
-      @media (max-width: 992px) {
-        nav {
-          padding: 12px 20px;
-        }
-        .logo {
-          font-size: 20px;
-        }
-        .toggle-btn {
-          padding: 6px 8px;
-          font-size: 16px;
-        }
-        section {
-          padding: 90px 16px;
-        }
-        #hero h1 {
-          font-size: 38px;
-        }
-        #hero p {
-          font-size: 16px;
-        }
-      }
+    /* Projects */
+    .projects-grid{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    @media (max-width:1100px){ .projects-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){ .projects-grid{grid-template-columns:1fr} }
 
-      /* Tablets & phones: stack cards vertically, smaller images */
-      @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          right: 0;
-          top: 60px;
-          background: rgba(20, 20, 20, 0.98);
-          flex-direction: column;
-          gap: 0;
-          width: 220px;
-          transform: translateX(100%);
-          transition: transform 0.25s ease;
-          padding: 10px 0;
-          border-left: 1px solid rgba(255,255,255,0.04);
-          height: calc(100vh - 60px);
-          overflow-y: auto;
-        }
+    .project{
+      position:relative; overflow:hidden; border-radius:12px; cursor:pointer; min-height:150px;
+      display:flex; flex-direction:column; justify-content:flex-end; padding:14px; color:var(--text);
+      background-size:cover; background-position:center; transition:transform .35s var(--ease), box-shadow .35s var(--ease)
+    }
+    .project::after{ content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(2,6,23,0.72), transparent); z-index:0}
+    .project .meta{position:relative; z-index:2}
+    .project:hover{ transform:translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.6) }
 
-        /* show menu button on small screens */
-        .menu-btn {
-          display: inline-block;
-        }
+    /* Filters */
+    .filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+    .filters button{background:transparent; color:var(--muted); border:1px solid var(--glass); padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:700}
+    .filters button.active{color:var(--accent); border-color:var(--accent); background:rgba(0,0,0,0.03)}
 
-        /* hide original right-side controls (toggle) inside nav-links area on desktop; keep toggle visible */
-        .nav-links a {
-          padding: 14px 18px;
-          width: 100%;
-          border-bottom: 1px solid rgba(255,255,255,0.02);
-        }
+    /* Modal */
+    .modal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:120;
+      background:linear-gradient(0deg, rgba(2,6,23,0.55), rgba(2,6,23,0.75));
+      padding:20px;
+    }
+    .modal.open{display:flex}
+    .modal-card{width:min(980px,96vw); border-radius:12px; background:var(--card); padding:18px; box-shadow:var(--shadow); max-height:90vh; overflow:auto}
+    .modal-card .close{float:right; background:transparent; border:0; color:var(--muted); font-size:18px; cursor:pointer}
 
-        /* when nav is open (body.nav-open), slide menu in */
-        body.nav-open .nav-links {
-          transform: translateX(0);
-        }
+    /* Contact */
+    .contact-grid{display:grid; grid-template-columns:1fr 360px; gap:18px}
+    @media (max-width:880px){ .contact-grid{grid-template-columns:1fr} }
+    label{display:block; font-weight:600; margin-bottom:6px; color:var(--muted); font-size:14px}
+    input[type="text"], input[type="email"], textarea{
+      width:100%; padding:12px; border-radius:10px; border:1px solid var(--glass); background:transparent; color:var(--text);
+      outline:none; resize:vertical; min-height:44px;
+    }
 
-        /* shrink nav padding for mobile */
-        nav {
-          padding: 12px 16px;
-        }
-        .logo {
-          font-size: 18px;
-        }
+    /* footer */
+    footer{margin-top:36px; text-align:center; color:var(--muted); font-size:14px; padding:16px}
 
-        /* Layout stack adjustments */
-        #about .container {
-          flex-direction: column;
-          align-items: center;
-        }
-        #about img {
-          max-width: 220px;
-        }
+    /* small screens: mobile nav */
+    @media (max-width:880px){
+      .nav-links{ position:fixed; right:12px; top:78px; background:var(--card); padding:12px; border-radius:12px; flex-direction:column; gap:6px; box-shadow:var(--shadow); display:none }
+      .nav-links.show{ display:flex }
+      .menu-toggle{display:inline-block}
+      header{padding:10px 12px}
+      .wrap{padding:14px}
+      .hero-inner{flex-direction:column; text-align:center}
+      .avatar{margin:0 auto}
+      .hero-text h1{font-size:22px}
+    }
 
-        .cards {
-          flex-direction: column;
-          gap: 14px;
-        }
-        .card {
-          width: 100%;
-          padding: 16px;
-        }
-        .card img {
-          max-width: 100%;
-          border-radius: 12px;
-        }
+    /* subtle entrance animations */
+    .reveal{opacity:0; transform:translateY(10px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
+    .reveal.in{opacity:1; transform:none}
 
-        /* Hero adjustments */
-        #hero {
-          padding-top: 110px;
-        }
-        #hero img {
-          width: 140px;
-          height: 140px;
-        }
-        #hero h1 {
-          font-size: 32px;
-        }
-        #hero p {
-          font-size: 15px;
-        }
+    /* little utilities */
+    .muted{color:var(--muted)} .small{font-size:13px}
+  </style>
+</head>
+<body>
 
-        /* Footer spacing */
-        footer {
-          padding: 22px 12px;
-        }
-      }
+  <!-- Header -->
+  <header>
+    <div class="brand" onclick="location.href='#hero'" aria-hidden="true">
+      <div class="logo">SC</div>
+      <div class="name small">
+        <div style="font-weight:800">Sandeep Chenji</div>
+        <div class="small muted">Software Developer</div>
+      </div>
+    </div>
 
-      /* Very small phones */
-      @media (max-width: 420px) {
-        nav {
-          padding: 10px 12px;
-        }
-        .toggle-btn {
-          font-size: 16px;
-          padding: 5px 8px;
-        }
-        #hero h1 {
-          font-size: 26px;
-        }
-        #hero p {
-          font-size: 14px;
-        }
-        .nav-links {
-          width: 200px;
-        }
-        .nav-links a {
-          padding: 12px 14px;
-          font-size: 15px;
-        }
-        .container {
-          padding: 0 10px;
-        }
-        section {
-          padding: 80px 12px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <div style="display:flex; align-items:center; gap:10px;">
-        <button class="menu-btn" id="menu-toggle" aria-label="Open menu">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="logo">Sandeep Chenji</div>
+    <nav aria-label="Primary navigation">
+      <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks" title="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
 
-      <div class="nav-links" id="nav-links">
-        <a href="#hero" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#strengths">Strengths</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div style="display:flex; align-items:center; gap:10px;">
-        <div class="toggle-btn" id="mode-toggle">🌞</div>
-      </div>
+      <button class="theme-toggle" id="themeToggle" aria-pressed="false" title="Toggle light/dark">
+        <i class="fa-regular fa-sun"></i>
+      </button>
     </nav>
+  </header>
+
+  <main class="wrap" id="mainWrap">
 
     <!-- HERO -->
-    <section
-      id="hero"
-      style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding-top: 120px;
-      "
-    >
-      <img
-        src="profile.jpeg"
-        alt="Sandeep Chenji"
-        style="
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          margin-bottom: 20px;
-          transition: transform 0.3s;
-        "
-        onmouseover="this.style.transform='scale(1.1)';"
-        onmouseout="this.style.transform='scale(1)';"
-      />
-      <h1>Hello, I'm Sandeep Chenji</h1>
-      <p>Passionate Computer Science Student | Aspiring Software Developer</p>
-      <a href="sandeepChenjiResume (1).pdf" class="btn" target="_blank">View Resume</a>
+    <section id="hero" class="hero card" aria-labelledby="heroTitle">
+      <div class="hero-inner">
+        <div class="avatar" aria-hidden="true">
+          <!-- 🚩 Replace with your avatar image -->
+          <img src="profile.jpeg" alt="Sandeep Chenji — avatar">
+        </div>
 
-      <div style="margin-top: 15px; font-size: 24px">
-        <a
-          href="https://linkedin.com/in/chenjisandeep"
-          target="_blank"
-          style="margin: 0 10px; color: #0e76a8"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a
-          href="https://github.com/chenjisandeep"
-          target="_blank"
-          style="margin: 0 10px; color: #fff"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-        <a
-          href="https://facebook.com/yourprofile"
-          target="_blank"
-          style="margin: 0 10px; color: #3b5998"
-        >
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a
-          href="https://instagram.com/yourprofile"
-          target="_blank"
-          style="margin: 0 10px; color: #e4405f"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a
-          href="https://twitter.com/yourprofile"
-          target="_blank"
-          style="margin: 0 10px; color: #1da1f2"
-        >
-          <i class="fab fa-twitter"></i>
-        </a>
+        <div class="hero-text">
+          <h1 id="heroTitle">Hi — I'm <span style="color:var(--accent)">Sandeep Chenji</span></h1>
+          <p class="lead muted">Computer Science student & aspiring software developer. I build reliable, maintainable applications and polished web experiences.</p>
+
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+            <div class="roles" id="typedRoles" aria-live="polite"></div>
+          </div>
+
+          <div class="hero-ctas">
+            <a href="sandeep_resume.pdf" class="btn" target="_blank" rel="noopener">Download Resume</a>
+            <button class="btn ghost" id="contactBtn">Work with me</button>
+          </div>
+
+          <div style="margin-top:12px; color:var(--muted); font-weight:600">
+            <a href="https://linkedin.com/in/chenjisandeep" target="_blank" rel="noopener" style="margin-right:10px; color:inherit"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/chenjisandeep" target="_blank" rel="noopener" style="margin-right:10px; color:inherit"><i class="fab fa-github"></i></a>
+            <!-- add other social icons -->
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section
-      id="about"
-      style="display: flex; gap: 30px; flex-wrap: wrap; align-items: center"
-    >
-      <img
-        src="about.jpeg"
-        alt="Profile"
-        style="max-width: 200px; border-radius: 20px"
-      />
-      <div>
-        <h1>About Me</h1>
-        <br />
-        <p>
-          <i
-            class="fas fa-map-marker-alt"
-            style="color: #00bfff; margin-right: 8px"
-          ></i>
-          <strong>Location:</strong> Venkatagiri, Andhra Pradesh
-        </p>
-        <p>
-          <i
-            class="fas fa-envelope"
-            style="color: #00bfff; margin-right: 8px"
-          ></i>
-          <strong>Email:</strong> chenjisandeep@gmail.com
-        </p>
-        <p>
-          <i class="fas fa-phone" style="color: #00bfff; margin-right: 8px"></i>
-          <strong>Phone:</strong> +91-8688023831
-        </p>
-        <p>
-          <i
-            class="fas fa-bullseye"
-            style="color: #00bfff; margin-right: 8px"
-          ></i>
-          <strong>Objective:</strong> Seeking an entry-level position leveraging
-          my skills in Java, C, Python, HTML, CSS, and JavaScript.
-        </p>
-        <div style="margin-top: 15px; font-size: 24px">
-          <a
-            href="https://linkedin.com/in/chenjisandeep"
-            target="_blank"
-            style="margin-right: 15px; color: #0e76a8"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://github.com/chenjisandeep"
-            target="_blank"
-            style="margin-right: 15px; color: #fff"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://facebook.com/yourprofile"
-            target="_blank"
-            style="margin-right: 15px; color: #3b5998"
-          >
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a
-            href="https://instagram.com/yourprofile"
-            target="_blank"
-            style="margin-right: 15px; color: #e4405f"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://twitter.com/yourprofile"
-            target="_blank"
-            style="color: #1da1f2"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
+    <section id="about" class="card reveal" aria-labelledby="aboutTitle">
+      <div class="section-title">
+        <span style="font-size:18px">👋</span>
+        <div style="display:flex; flex-direction:column">
+          <div id="aboutTitle">About</div>
+          <div class="small muted">A quick snapshot</div>
         </div>
       </div>
-    </section>
 
-    <!-- EDUCATION -->
+      <div class="grid cols-2">
+        <div>
+          <h3 style="margin-top:0">Who I am</h3>
+          <p class="muted small">I am a third-year Computer Science student focused on writing clean code and building useful software. I like algorithms, backend systems, and building interactive web UIs.</p>
 
-    <section id="education">
-      <div class="container">
-        <h1>Education</h1>
-        <br />
-        <div class="cards">
-          <div class="card">
-            <img
-              src="btech.jpeg"
-              alt="College"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-university"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >B.Tech in CSE
-            </h3>
-            <p>
-              <i
-                class="fas fa-map-marker-alt"
-                style="color: #00bfff; margin-right: 5px"
-              ></i
-              >Narayana Engineering College, Gudur
-            </p>
+          <div style="margin-top:12px">
+            <p class="small"><strong>Location:</strong> Venkatagiri, Andhra Pradesh</p>
+            <p class="small"><strong>Email:</strong> <a href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a></p>
+            <p class="small"><strong>Phone:</strong> +91-8688023831</p>
           </div>
 
-          <div class="card">
-            <img
-              src="inter.jpeg"
-              alt="Junior College"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-graduation-cap"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Intermediate (MPC)
-            </h3>
-            <p>
-              <i
-                class="fas fa-map-marker-alt"
-                style="color: #00bfff; margin-right: 5px"
-              ></i
-              >Amaravathi Junior College, Venkatagiri
-            </p>
-          </div>
-
-          <div class="card">
-            <img
-              src="10th.jpeg"
-              alt="School"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-school"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >SSC
-            </h3>
-            <p>
-              <i
-                class="fas fa-map-marker-alt"
-                style="color: #00bfff; margin-right: 5px"
-              ></i
-              >Sri Sai Theja High School, Venkatagiri
-            </p>
+          <div style="margin-top:14px">
+            <a class="btn" href="mailto:chenjisandeep@gmail.com">Contact</a>
+            <a class="btn ghost" href="https://github.com/chenjisandeep" target="_blank" rel="noopener">View Code</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container">
-        <h1>Skills</h1>
-        <br />
-        <div class="cards">
-          <div class="card">
-            <img
-              src="java.jpeg"
-              alt="Java"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-code"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Programming
-            </h3>
-            <p>Java, Python, C</p>
-          </div>
-
-          <div class="card">
-            <img
-              src="html.jpeg"
-              alt="Web"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-laptop-code"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Web
-            </h3>
-            <p>HTML, CSS, JavaScript</p>
-          </div>
-
-          <div class="card">
-            <img
-              src="mysql.jpeg"
-              alt="Database"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-database"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Databases
-            </h3>
-            <p>MySQL, VS Code, Eclipse</p>
+        <div>
+          <h3>Skills</h3>
+          <div style="margin-top:12px">
+            <div class="skill">
+              <div class="meta"><span>Java</span><span class="small muted">80%</span></div>
+              <div class="progress"><i data-width="80%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="meta"><span>JavaScript / Web</span><span class="small muted">72%</span></div>
+              <div class="progress"><i data-width="72%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="meta"><span>Python</span><span class="small muted">65%</span></div>
+              <div class="progress"><i data-width="65%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="meta"><span>Databases</span><span class="small muted">60%</span></div>
+              <div class="progress"><i data-width="60%"></i></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <h1>Projects</h1>
-        <br />
-        <div class="cards">
-          <div class="card">
-            <img
-              src="myport.jpeg"
-              alt="My Portfolio"
-              style="width: 100%; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-laptop-code"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >My Portfolio
-            </h3>
-            <p>HTML, CSS, JavaScript</p>
-          </div>
-
-          <div class="card">
-            <img
-              src="atm.jpeg"
-              alt="Chat App"
-              style="width: 100%; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-comments"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Chat App
-            </h3>
-            <p>Core Java, Sockets — Multi-client chat system</p>
-          </div>
+    <section id="projects" class="card reveal" aria-labelledby="projectsTitle">
+      <div class="section-title">
+        <span style="font-size:18px">🧩</span>
+        <div style="display:flex; flex-direction:column">
+          <div id="projectsTitle">Projects</div>
+          <div class="small muted">Selected works — click to view details</div>
         </div>
       </div>
-    </section>
 
-    <section id="strengths">
-      <div class="container">
-        <h1>Strengths</h1>
-        <br />
-        <div class="cards">
-          <div class="card">
-            <img
-              src="problem.jpeg"
-              alt="Problem Solving"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-lightbulb"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Problem Solving
-            </h3>
-          </div>
+      <div class="filters" role="toolbar" aria-label="Project filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="java">Java</button>
+        <button class="filter-btn" data-filter="ml">ML</button>
+      </div>
 
-          <div class="card">
-            <img
-              src="quick.jpeg"
-              alt="Quick Learner"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-rocket"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Quick Learner
-            </h3>
-          </div>
-
-          <div class="card">
-            <img
-              src="team.jpeg"
-              alt="Team Player"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-users"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Team Player
-            </h3>
-          </div>
-
-          <div class="card">
-            <img
-              src="comm.jpeg"
-              alt="Better Communication"
-              style="width: 80px; border-radius: 10px; margin-bottom: 10px"
-            />
-            <h3>
-              <i
-                class="fas fa-comments"
-                style="color: #00bfff; margin-right: 8px"
-              ></i
-              >Better Communication
-            </h3>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Replace background-image with real screenshots or <img> inside -->
+        <div class="project" tabindex="0" data-type="web" data-title="Personal Portfolio" data-desc="Built with HTML, CSS, JavaScript; responsive layout; animations." style="background-image:url('myport.jpeg')">
+          <div class="meta">
+            <div style="font-weight:800">Personal Portfolio</div>
+            <div class="small muted">HTML • CSS • JS</div>
           </div>
         </div>
+
+        <div class="project" tabindex="0" data-type="java" data-title="Chat App (Sockets)" data-desc="Multi-client chat application using Core Java sockets." style="background-image:url('atm.jpeg')">
+          <div class="meta">
+            <div style="font-weight:800">Chat App</div>
+            <div class="small muted">Java • Networking</div>
+          </div>
+        </div>
+
+        <div class="project" tabindex="0" data-type="web" data-title="E-commerce UI" data-desc="Front-end demo for a shop; product filtering & cart UI." style="background-image:url('project3.jpeg')">
+          <div class="meta">
+            <div style="font-weight:800">E-commerce UI</div>
+            <div class="small muted">React • UI</div>
+          </div>
+        </div>
+
+        <!-- add more projects similarly -->
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
-      <div class="container" style="text-align: center; padding: 80px 20px">
-        <h1>Contact</h1>
-        <br />
-        <p>Feel free to reach out for jobs or collaborations.</p>
-        <a
-          href="mailto:chenjisandeep@gmail.com"
-          class="btn"
-          style="margin-top: 15px"
-          >Send Email</a
-        >
-
-        <div style="margin-top: 30px; font-size: 28px">
-          <a
-            href="https://linkedin.com/in/chenjisandeep"
-            target="_blank"
-            style="margin: 0 12px; color: #0e76a8; transition: 0.3s"
-            onmouseover="this.style.transform='scale(1.2)';"
-            onmouseout="this.style.transform='scale(1)';"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://facebook.com/yourprofile"
-            target="_blank"
-            style="margin: 0 12px; color: #3b5998; transition: 0.3s"
-            onmouseover="this.style.transform='scale(1.2)';"
-            onmouseout="this.style.transform='scale(1)';"
-          >
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a
-            href="https://instagram.com/yourprofile"
-            target="_blank"
-            style="margin: 0 12px; color: #e4405f; transition: 0.3s"
-            onmouseover="this.style.transform='scale(1.2)';"
-            onmouseout="this.style.transform='scale(1)';"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="mailto:chenjisandeep@gmail.com"
-            style="margin: 0 12px; color: #dd4b39; transition: 0.3s"
-            onmouseover="this.style.transform='scale(1.2)';"
-            onmouseout="this.style.transform='scale(1)';"
-          >
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a
-            href="https://twitter.com/yourprofile"
-            target="_blank"
-            style="margin: 0 12px; color: #1da1f2; transition: 0.3s"
-            onmouseover="this.style.transform='scale(1.2)';"
-            onmouseout="this.style.transform='scale(1)';"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
+    <section id="contact" class="card reveal" aria-labelledby="contactTitle">
+      <div class="section-title">
+        <span style="font-size:18px">✉️</span>
+        <div style="display:flex; flex-direction:column">
+          <div id="contactTitle">Contact</div>
+          <div class="small muted">Let's collaborate — send a message</div>
         </div>
+      </div>
+
+      <div class="contact-grid">
+        <form id="contactForm" class="card" onsubmit="return handleContactSubmit(event)" aria-label="Contact form">
+          <label for="name">Full name</label>
+          <input id="name" type="text" required placeholder="Your name">
+
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="you@example.com">
+
+          <label for="message">Message</label>
+          <textarea id="message" rows="6" required placeholder="Tell me about your project or role"></textarea>
+
+          <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+            <button class="btn" type="submit">Send message</button>
+            <div class="muted small">Or email directly: <a href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a></div>
+          </div>
+        </form>
+
+        <aside class="card small muted">
+          <h4 style="margin-top:0">Availability</h4>
+          <p class="small">Open for internships and entry-level roles. Fast learner, collaborative, eager to contribute to real projects.</p>
+
+          <div style="margin-top:12px">
+            <p class="small"><strong>Location:</strong> Venkatagiri, Andhra Pradesh</p>
+            <p class="small"><strong>Resume:</strong> <a href="sandeep_resume.pdf" target="_blank">Download</a></p>
+            <p class="small"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/chenjisandeep" target="_blank">chenjisandeep</a></p>
+          </div>
+
+        </aside>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-      <div>
-        <a href="https://linkedin.com/in/chenjisandeep" target="_blank"
-          ><i class="fab fa-linkedin"></i
-        ></a>
-        <a href="https://github.com/chenjisandeep" target="_blank"
-          ><i class="fab fa-github"></i
-        ></a>
-      </div>
-      <p>&copy; 2025 Sandeep Chenji</p>
+      <div class="small muted">© <span id="year"></span> Sandeep Chenji — Built with HTML, CSS & JS</div>
     </footer>
 
-    <script>
-      const toggleBtn = document.getElementById("mode-toggle");
-      const menuBtn = document.getElementById("menu-toggle");
-      const navLinks = document.getElementById("nav-links");
+  </main>
 
-      // Preserve theme in localStorage
-      if (localStorage.getItem("theme") === "light") {
-        document.body.classList.add("light-mode");
-        toggleBtn.textContent = "🌙";
-      }
+  <!-- Project modal -->
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card" role="document">
+      <button class="close" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc" class="muted small"></p>
+      <div id="modalMedia" style="margin-top:12px">
+        <!-- optional screenshot or details -->
+      </div>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+        <a id="modalRepo" class="btn ghost" href="#" target="_blank" rel="noopener">View repo</a>
+        <a id="modalLive" class="btn" href="#" target="_blank" rel="noopener">Open live</a>
+      </div>
+    </div>
+  </div>
 
-      toggleBtn.addEventListener("click", () => {
-        const isLight = document.body.classList.toggle("light-mode");
-        toggleBtn.textContent = isLight ? "🌙" : "🌞";
-        localStorage.setItem("theme", isLight ? "light" : "dark");
-      });
+  <script>
+    // Small helper
+    const q = s => document.querySelector(s);
+    const qa = s => Array.from(document.querySelectorAll(s));
 
-      // Mobile menu toggle: add/remove body class so CSS can slide menu in/out
-      menuBtn.addEventListener("click", () => {
-        const open = document.body.classList.toggle("nav-open");
-        // swap icon
-        menuBtn.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      });
+    // Theme toggle (persist)
+    const themeToggle = q('#themeToggle');
+    const root = document.documentElement;
+    function setTheme(light){
+      document.body.classList.toggle('light', !!light);
+      themeToggle.setAttribute('aria-pressed', !!light);
+      themeToggle.innerHTML = light ? '<i class="fa-regular fa-moon"></i>' : '<i class="fa-regular fa-sun"></i>';
+      localStorage.setItem('portfolio_theme', light ? 'light' : 'dark');
+    }
+    // Initialize
+    setTheme(localStorage.getItem('portfolio_theme') === 'light');
 
-      // Close mobile nav when a link is clicked (better UX)
-      const navAnchorLinks = navLinks.querySelectorAll("a");
-      navAnchorLinks.forEach((a) =>
-        a.addEventListener("click", () => {
-          if (document.body.classList.contains("nav-open")) {
-            document.body.classList.remove("nav-open");
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          }
-        })
-      );
+    themeToggle.addEventListener('click', ()=> setTheme(!document.body.classList.contains('light')));
 
-      // optional: close menu when clicking outside on small screens
-      document.addEventListener("click", (e) => {
-        if (
-          window.innerWidth <= 768 &&
-          document.body.classList.contains("nav-open")
-        ) {
-          const clickedInsideNav = navLinks.contains(e.target) || menuBtn.contains(e.target);
-          if (!clickedInsideNav) {
-            document.body.classList.remove("nav-open");
-            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          }
+    // Mobile menu
+    const menuBtn = q('#menuBtn'), navLinks = q('#navLinks');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      const open = navLinks.classList.toggle('show');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Smooth scroll & active link
+    qa('.nav-link').forEach(a => {
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+        // close mobile menu
+        if(navLinks.classList.contains('show')) { navLinks.classList.remove('show'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; menuBtn.setAttribute('aria-expanded','false') }
+        // set active
+        qa('.nav-link').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      })
+    });
+
+  // Typed roles (simple)
+   (function typedRoles(){
+      const el = q('#typedRoles');
+      if(!el) return;
+      const roles = ['Java Developer', 'Web Developer', 'Problem Solver', 'Quick Learner'];
+      let i=0, j=0, forward=true;
+      function tick(){
+        const cur = roles[i];
+        el.textContent = cur.slice(0, j);
+        if(forward){
+          if(j < cur.length) { j++; setTimeout(tick, 70) }
+          else { forward=false; setTimeout(tick, 900) }
+        } else {
+          if(j>0){ j--; setTimeout(tick, 40) } else { forward=true; i=(i+1)%roles.length; setTimeout(tick, 200) }
         }
+      }
+      tick();
+    })();
+
+    // Skills animate on reveal
+    function animateSkills(){
+      qa('.progress > i').forEach(el => {
+        const w = el.getAttribute('data-width') || '60%';
+        el.style.width = w;
       });
-    </script>
-  </body>
+    }
+
+    // Reveal on scroll using IntersectionObserver
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          // animate skills when skills section shown
+          if(entry.target.id === 'about') animateSkills();
+          observer.unobserve(entry.target);
+        }
+      })
+    }, {threshold:0.12});
+
+    qa('.reveal').forEach(el=> observer.observe(el));
+    // also observe about and hero
+    const aboutSec = q('#about'), hero = q('#hero'), projects = q('#projects'), contact = q('#contact');
+    [hero, aboutSec, projects, contact].forEach(s => s && observer.observe(s));
+
+    // Projects filtering & modal details
+    const filterBtns = qa('.filter-btn'), projectsGrid = q('#projectsGrid'), modal = q('#projectModal');
+    filterBtns.forEach(btn => btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      qa('.project').forEach(p => {
+        p.style.display = (filter === 'all' || p.dataset.type === filter) ? '' : 'none';
+      });
+    }));
+
+    // open modal on project click
+    qa('.project').forEach(p=>{
+      p.addEventListener('click', ()=> openProjectModal(p));
+      p.addEventListener('keydown', e => { if(e.key === 'Enter') openProjectModal(p) });
+    });
+    function openProjectModal(p){
+      const title = p.dataset.title || 'Project', desc = p.dataset.desc || '';
+      q('#modalTitle').textContent = title;
+      q('#modalDesc').textContent = desc;
+      q('#modalMedia').innerHTML = `<div style="height:220px; background-image:var(--img, url('${p.style.backgroundImage.replace('url("','').replace('")','')}')); background-size:cover; background-position:center; border-radius:10px"></div>`;
+      q('#projectModal').classList.add('open'); q('#projectModal').setAttribute('aria-hidden','false');
+      // example: set repo / live links if available. Use data attributes in HTML for real links.
+      q('#modalRepo').setAttribute('href', '#');
+      q('#modalLive').setAttribute('href', '#');
+    }
+    q('#modalClose')?.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+
+    // Contact form handling (basic validation + mailto fallback)
+    function handleContactSubmit(e){
+      e.preventDefault();
+      const name = q('#name').value.trim(), email = q('#email').value.trim(), msg = q('#message').value.trim();
+      if(!name || !email || !msg){ alert('Please complete all fields'); return false; }
+      // open mail client as fallback
+      const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+      const body = encodeURIComponent(`${msg}\n\n— ${name}\n${email}`);
+      window.location.href = `mailto:chenjisandeep@gmail.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+
+    // small helpers: contact CTA scroll
+    q('#contactBtn')?.addEventListener('click', ()=> document.querySelector('#contact').scrollIntoView({behavior:'smooth'}));
+
+    // set year in footer
+    q('#year').textContent = new Date().getFullYear();
+
+    // Accessibility: close modal with Escape
+    document.addEventListener('keydown', (e)=> {
+      if(e.key === 'Escape') closeModal();
+    });
+
+    // initial reveal
+    window.addEventListener('load', ()=> {
+      // mark hero visible quickly
+      hero.classList.add('in');
+      // animate skill widths after short delay if about visible
+      if(aboutSec) setTimeout(()=> { if(aboutSec.getBoundingClientRect().top < window.innerHeight) animateSkills() }, 600);
+    });
+
+  </script>
+
+</body>
 </html>
-
-
-
-
