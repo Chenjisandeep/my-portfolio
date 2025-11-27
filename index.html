@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,6 +67,17 @@
         border-radius: 5px;
         border: 1px solid #00bfff;
         color: #00bfff;
+      }
+
+      /* Mobile menu button (hidden on desktop) */
+      .menu-btn {
+        display: none;
+        font-size: 20px;
+        background: transparent;
+        border: none;
+        color: #00bfff;
+        cursor: pointer;
+        padding: 6px;
       }
 
       section {
@@ -235,12 +247,161 @@
         background: #b3b3b3;
         color: #111;
       }
+
+      /* ---------------------------
+         RESPONSIVE / MOBILE RULES
+         --------------------------- */
+
+      /* General small screens */
+      @media (max-width: 992px) {
+        nav {
+          padding: 12px 20px;
+        }
+        .logo {
+          font-size: 20px;
+        }
+        .toggle-btn {
+          padding: 6px 8px;
+          font-size: 16px;
+        }
+        section {
+          padding: 90px 16px;
+        }
+        #hero h1 {
+          font-size: 38px;
+        }
+        #hero p {
+          font-size: 16px;
+        }
+      }
+
+      /* Tablets & phones: stack cards vertically, smaller images */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          right: 0;
+          top: 60px;
+          background: rgba(20, 20, 20, 0.98);
+          flex-direction: column;
+          gap: 0;
+          width: 220px;
+          transform: translateX(100%);
+          transition: transform 0.25s ease;
+          padding: 10px 0;
+          border-left: 1px solid rgba(255,255,255,0.04);
+          height: calc(100vh - 60px);
+          overflow-y: auto;
+        }
+
+        /* show menu button on small screens */
+        .menu-btn {
+          display: inline-block;
+        }
+
+        /* hide original right-side controls (toggle) inside nav-links area on desktop; keep toggle visible */
+        .nav-links a {
+          padding: 14px 18px;
+          width: 100%;
+          border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+
+        /* when nav is open (body.nav-open), slide menu in */
+        body.nav-open .nav-links {
+          transform: translateX(0);
+        }
+
+        /* shrink nav padding for mobile */
+        nav {
+          padding: 12px 16px;
+        }
+        .logo {
+          font-size: 18px;
+        }
+
+        /* Layout stack adjustments */
+        #about .container {
+          flex-direction: column;
+          align-items: center;
+        }
+        #about img {
+          max-width: 220px;
+        }
+
+        .cards {
+          flex-direction: column;
+          gap: 14px;
+        }
+        .card {
+          width: 100%;
+          padding: 16px;
+        }
+        .card img {
+          max-width: 100%;
+          border-radius: 12px;
+        }
+
+        /* Hero adjustments */
+        #hero {
+          padding-top: 110px;
+        }
+        #hero img {
+          width: 140px;
+          height: 140px;
+        }
+        #hero h1 {
+          font-size: 32px;
+        }
+        #hero p {
+          font-size: 15px;
+        }
+
+        /* Footer spacing */
+        footer {
+          padding: 22px 12px;
+        }
+      }
+
+      /* Very small phones */
+      @media (max-width: 420px) {
+        nav {
+          padding: 10px 12px;
+        }
+        .toggle-btn {
+          font-size: 16px;
+          padding: 5px 8px;
+        }
+        #hero h1 {
+          font-size: 26px;
+        }
+        #hero p {
+          font-size: 14px;
+        }
+        .nav-links {
+          width: 200px;
+        }
+        .nav-links a {
+          padding: 12px 14px;
+          font-size: 15px;
+        }
+        .container {
+          padding: 0 10px;
+        }
+        section {
+          padding: 80px 12px;
+        }
+      }
     </style>
   </head>
   <body>
     <nav>
-      <div class="logo">Sandeep Chenji</div>
-      <div class="nav-links">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button class="menu-btn" id="menu-toggle" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">Sandeep Chenji</div>
+      </div>
+
+      <div class="nav-links" id="nav-links">
         <a href="#hero" class="active">Home</a>
         <a href="#about">About</a>
         <a href="#education">Education</a>
@@ -249,21 +410,13 @@
         <a href="#strengths">Strengths</a>
         <a href="#contact">Contact</a>
       </div>
-      <div class="toggle-btn" id="mode-toggle">🌞</div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="toggle-btn" id="mode-toggle">🌞</div>
+      </div>
     </nav>
 
     <!-- HERO -->
-    <!--
-    <section id="hero">
-      <img
-        src="C:\Users\user\Desktop\portfolio\portfolio\profile.jpeg"
-        alt="Sandeep Chenji"
-      />
-      <h1>Hello, I'm Sandeep Chenji</h1>
-      <p>Passionate Computer Science Student | Aspiring Software Developer</p>
-      <a href="assets/resume.pdf" class="btn" target="_blank">View Resume</a>
-    </section>
-  -->
     <section
       id="hero"
       style="
@@ -714,8 +867,6 @@
       </div>
     </section>
 
-    >
-
     <!-- FOOTER -->
     <footer>
       <div>
@@ -731,51 +882,51 @@
 
     <script>
       const toggleBtn = document.getElementById("mode-toggle");
-      const sections = document.querySelectorAll("section");
-      const navLinks = document.querySelectorAll(".nav-links a");
+      const menuBtn = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
 
+      // Preserve theme in localStorage
       if (localStorage.getItem("theme") === "light") {
         document.body.classList.add("light-mode");
         toggleBtn.textContent = "🌙";
       }
 
       toggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-        if (document.body.classList.contains("light-mode")) {
-          localStorage.setItem("theme", "light");
-          toggleBtn.textContent = "🌙";
-        } else {
-          localStorage.setItem("theme", "dark");
-          toggleBtn.textContent = "🌞";
-        }
+        const isLight = document.body.classList.toggle("light-mode");
+        toggleBtn.textContent = isLight ? "🌙" : "🌞";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
       });
 
-      // Scroll-based gradient parallax & active nav
-      window.addEventListener("scroll", () => {
-        const scrollTop = window.scrollY;
+      // Mobile menu toggle: add/remove body class so CSS can slide menu in/out
+      menuBtn.addEventListener("click", () => {
+        const open = document.body.classList.toggle("nav-open");
+        // swap icon
+        menuBtn.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
 
-        sections.forEach((sec) => {
-          const offset = sec.offsetTop;
-          const height = sec.offsetHeight;
-          if (
-            scrollTop + window.innerHeight > offset &&
-            scrollTop < offset + height
-          ) {
-            let percent = ((scrollTop - offset) / height) * 50;
-            sec.style.backgroundPosition = `center ${percent}px`;
+      // Close mobile nav when a link is clicked (better UX)
+      const navAnchorLinks = navLinks.querySelectorAll("a");
+      navAnchorLinks.forEach((a) =>
+        a.addEventListener("click", () => {
+          if (document.body.classList.contains("nav-open")) {
+            document.body.classList.remove("nav-open");
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
           }
-        });
+        })
+      );
 
-        let current = "";
-        sections.forEach((sec) => {
-          const top = window.scrollY + 100;
-          if (top >= sec.offsetTop) current = sec.getAttribute("id");
-        });
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === "#" + current)
-            link.classList.add("active");
-        });
+      // optional: close menu when clicking outside on small screens
+      document.addEventListener("click", (e) => {
+        if (
+          window.innerWidth <= 768 &&
+          document.body.classList.contains("nav-open")
+        ) {
+          const clickedInsideNav = navLinks.contains(e.target) || menuBtn.contains(e.target);
+          if (!clickedInsideNav) {
+            document.body.classList.remove("nav-open");
+            menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
       });
     </script>
   </body>
