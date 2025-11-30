@@ -3,352 +3,258 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sandeep Chenji — Portfolio</title>
-  <meta name="description" content="Sandeep Chenji — Student & Software Developer. Java • Web • Projects • Contact">
+  <title>Sandeep Chenji — Software Engineer (Student)</title>
+  <meta name="description" content="Portfolio of Sandeep Chenji — Java • Web • Problem Solving. Contact: chenjisandeep@gmail.com">
 
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
     :root{
-      --bg:#071227; --card:#0f1726; --muted:#9aa4b2; --accent:#00bfff; --glass: rgba(255,255,255,0.04);
-      --radius:12px; --max-width:1100px; --text:#e6eef6; --shadow: 0 10px 40px rgba(2,6,23,0.55);
-      --header-h:72px; --gutter:28px; --ease:cubic-bezier(.2,.9,.3,1);
+      --bg:#0b1220; --card:#0f1726; --muted:#9aa4b2; --accent:#00c2ff; --glass: rgba(255,255,255,0.04);
+      --radius:14px; --max-width:1100px; --text:#e6eef6; --shadow: 0 12px 48px rgba(2,6,23,0.6);
     }
-    body.light{ --bg:#f7fbff; --card:#ffffff; --muted:#55626f; --accent:#006fbf; --text:#07101a; --glass: rgba(4,17,30,0.03); --shadow:0 10px 34px rgba(12,30,50,0.08); }
+    *{box-sizing:border-box} html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text);background:linear-gradient(180deg,#061223 0%,var(--bg) 60%)}
+    a{color:inherit}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.55}
+    /* Container */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
 
-    /* Layout */
-    header{position:sticky; top:0; z-index:90; height:var(--header-h); display:flex; align-items:center; justify-content:space-between; padding:0 calc(var(--gutter)); background:linear-gradient(180deg, rgba(4,8,16,0.2), transparent);} 
-    .wrap{max-width:var(--max-width); margin:0 auto; padding:calc(var(--gutter))}
+    /* Header */
+    header{position:fixed;inset:0 0 auto 0;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:140;background:transparent}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#6ef1ff);color:#001;font-weight:800}
+    nav{display:flex;gap:16px;align-items:center}
+    .nav a{padding:8px 12px;border-radius:10px;font-weight:600;text-decoration:none;color:var(--muted)}
+    .nav a:hover{color:var(--accent);background:rgba(255,255,255,0.02)}
 
-    .brand{display:flex; align-items:center; gap:12px; cursor:pointer}
-    .logo{width:52px; height:52px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent), #6ef1ff); color:#001; font-weight:800}
-    .name{font-weight:800}
+    .hero{min-height:100vh;display:grid;place-items:center;padding:0 28px}
+    .hero-card{width:100%;max-width:1200px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:center}
 
-    nav{display:flex; gap:18px; align-items:center}
-    .nav-links{display:flex; gap:14px}
-    .nav-links a{color:var(--text); padding:8px 12px; border-radius:10px; text-decoration:none; font-weight:600}
-    .nav-links a:hover, .nav-links a.active{background:var(--glass); color:var(--accent)}
+    .profile{width:220px;border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(2,6,23,0.5);border:3px solid rgba(255,255,255,0.03)}
+    .profile img{width:100%;height:100%;object-fit:cover;display:block}
 
-    .theme-toggle{background:transparent; border:1px solid var(--glass); padding:8px; border-radius:10px; cursor:pointer; color:var(--text)}
-    .menu-toggle{display:none}
+    .hero-head h1{margin:0;font-size:30px;letter-spacing:0.2px}
+    .hero-head p.lead{margin:8px 0 14px;color:var(--muted);max-width:65ch}
+    .badge{display:inline-block;background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-weight:700;color:var(--accent);margin-right:8px}
 
-    /* Full-viewport sections for desktop */
-    main{min-height:100vh}
-    section{margin:calc(var(--gutter)) 0; padding:28px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); box-shadow:var(--shadow);}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{background:var(--accent);color:#001;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
 
-    /* Make each section fit a single desktop viewport while allowing content to scroll within the section if needed */
-    @media (min-width:880px){
-      section{
-        min-height: calc(100vh - var(--header-h) - 56px);
-        display:flex; align-items:center; /* center content vertically */
-      }
-      /* Keep section content constrained for readability */
-      .section-inner{width:100%; max-width:980px; margin:0 auto}
-    }
+    /* Quick stats */
+    .stats{display:flex;gap:12px;margin-top:16px}
+    .stat{background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:700;color:var(--muted)}
 
-    /* Mobile: natural flow, no forced height */
-    @media (max-width:879px){
-      section{min-height: auto; display:block}
-      .section-inner{width:100%}
-      .wrap{padding:18px}
-      .logo{width:44px;height:44px}
-    }
+    /* Sections */
+    section{padding:48px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+    .section-inner{max-width:1100px;margin:0 auto;padding:0 28px}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
 
-    /* Hero */
-    .hero-inner{display:flex; gap:22px; align-items:center; flex-wrap:wrap}
-    .avatar{width:140px;height:140px;border-radius:14px;flex-shrink:0;overflow:hidden;border:2px solid rgba(255,255,255,0.04);box-shadow:0 12px 40px rgba(2,6,23,0.45)}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-text h1{font-size:28px;margin:0 0 6px}
-    .lead{margin:0 0 12px;color:var(--muted);max-width:60ch}
+    /* Grid layouts */
+    .cols-2{display:grid;grid-template-columns:360px 1fr;gap:20px}
+    @media (max-width:980px){ .hero-card{grid-template-columns:1fr;grid-auto-rows:min-content}.cols-2{grid-template-columns:1fr}.profile{width:160px}} 
 
-    .btn{background:var(--accent); color:#001; border:0; padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer}
-    .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--glass)}
+    /* Skills */
+    .skills-grid{display:flex;flex-wrap:wrap;gap:12px}
+    .pill{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--muted)}
 
-    /* Sections general */
-    .section-title{display:flex;align-items:center;gap:12px;font-weight:800;margin-bottom:14px}
-    .cols-2{display:grid;grid-template-columns:360px 1fr;gap:18px}
-    @media (max-width:880px){ .cols-2{grid-template-columns:1fr} }
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:1100px){ .projects{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){ .projects{grid-template-columns:1fr} }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:16px;border-radius:12px}
+    .project-title{font-weight:800}
+    .muted{color:var(--muted)}
 
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    @media (max-width:1100px){ .projects-grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:640px){ .projects-grid{grid-template-columns:1fr} }
-
-    .project{position:relative; overflow:hidden; border-radius:12px; cursor:pointer; min-height:120px; display:flex; flex-direction:column; justify-content:flex-end; padding:14px; color:var(--text); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
-    .project .meta{position:relative;z-index:2}
-    .muted{color:var(--muted)} .small{font-size:13px}
+    /* Timeline / Experience */
+    .timeline{display:grid;gap:12px}
+    .timeline .item{display:flex;gap:12px;align-items:flex-start}
+    .timeline .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:6px}
 
     /* Contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
     @media (max-width:880px){ .contact-grid{grid-template-columns:1fr} }
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);outline:none}
 
-    /* Utilities */
-    .links-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    footer{padding:28px;text-align:center;color:var(--muted)}
 
-    /* Accessibility & performance tweaks */
-    a{word-break:break-word}
+    /* subtle interactions */
+    .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.35);transition:all .28s var(--ease)}
 
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:14px">
-      <div class="brand" onclick="location.href='#hero'" aria-hidden="true">
-        <div class="logo">SC</div>
-        <div class="name small">
-          <div>Sandeep Chenji</div>
-          <div class="small muted">B.Tech CSE • 2022–2026</div>
-        </div>
-      </div>
 
-      <nav aria-label="Primary navigation">
-        <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks" title="Menu"><i class="fa-solid fa-bars"></i></button>
-        <div class="nav-links" id="navLinks">
-          <a href="#hero" class="nav-link">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#projects" class="nav-link">Projects</a>
-          <a href="#experience" class="nav-link">Experience</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <button class="theme-toggle" id="themeToggle" aria-pressed="false" title="Toggle light/dark"><i class="fa-regular fa-sun"></i></button>
-      </nav>
+  <header>
+    <div class="brand">
+      <div class="logo">SC</div>
+      <div class="small muted">Sandeep Chenji — Software Engineer (Student)</div>
     </div>
+    <nav class="nav">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main class="wrap" id="mainWrap">
-    <!-- HERO (fits viewport on desktop) -->
-    <section id="hero" class="card" aria-labelledby="heroTitle">
-      <div class="section-inner">
-        <div class="hero-inner">
-          <div class="avatar" aria-hidden="true">
-            <img src="images/profile.jpg" alt="Sandeep Chenji — profile photo" />
-          </div>
+  <main class="hero">
+    <div class="hero-card">
+      <div class="profile">
+        <img src="images/profile.jpg" alt="Sandeep Chenji profile" />
+      </div>
 
-          <div class="hero-text">
-            <h1 id="heroTitle">Hi, I'm <span style="color:var(--accent)">Sandeep Chenji</span></h1>
-            <p class="lead muted">Third‑year Computer Science student at Narayana Engineering College, Gudur. I focus on Java-based backend systems, clean code, and building user-friendly web interfaces.</p>
+      <div class="hero-head">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <span class="badge">B.Tech CSE · 2022–2026</span>
+          <div class="muted">Venkatagiri, Andhra Pradesh</div>
+        </div>
 
-            <div class="links-row">
-              <a class="btn" href="sandeep_resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-              <a class="btn ghost" href="mailto:chenjisandeep@gmail.com">Email</a>
-              <a class="btn ghost" href="https://chenjisandeep.github.io/my-portfolio" target="_blank" rel="noopener">Live Site</a>
-            </div>
+        <h1>Hi — I'm <span style="color:var(--accent)">Sandeep Chenji</span></h1>
+        <p class="lead muted">A pragmatic Java developer and web engineer building reliable software and polished front-ends. I solve problems, write maintainable code, and ship projects that demonstrate engineering fundamentals.</p>
 
-            <div style="margin-top:12px;color:var(--muted);font-weight:600">
-              Venkatagiri, Andhra Pradesh • <a href="mailto:chenjisandeep@gmail.com" style="color:inherit">chenjisandeep@gmail.com</a> • +91 86880 23831
-              <div style="margin-top:8px"> <a href="https://linkedin.com/in/chenjisandeep" target="_blank" rel="noopener" style="margin-right:10px;color:inherit"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/chenjisandeep" target="_blank" rel="noopener" style="margin-right:10px;color:inherit"><i class="fab fa-github"></i></a>
-              </div>
-            </div>
-          </div>
+        <div class="cta-row">
+          <a class="btn" href="sandeep_resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+          <a class="btn ghost" href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a>
+          <a class="btn ghost" href="https://github.com/chenjisandeep" target="_blank">GitHub</a>
+          <a class="btn ghost" href="https://linkedin.com/in/chenjisandeep" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">Java • Backend</div>
+          <div class="stat">HTML/CSS/JS</div>
+          <div class="stat">Problem Solving</div>
         </div>
       </div>
-    </section>
-
-    <!-- ABOUT (fits viewport on desktop if short) -->
-    <section id="about" class="card reveal" aria-labelledby="aboutTitle">
-      <div class="section-inner">
-        <div class="section-title">
-          <span style="font-size:18px">📋</span>
-          <div style="display:flex;flex-direction:column">
-            <div id="aboutTitle">About & Objective</div>
-            <div class="small muted">Snapshot</div>
-          </div>
-        </div>
-
-        <div class="cols-2">
-          <div>
-            <h3 style="margin-top:0">Objective</h3>
-            <p class="muted small">To secure a software engineering role where I can apply my skills in Java, problem solving, and web development while continuously improving through real‑world projects.</p>
-
-            <h4 style="margin-top:18px">Education</h4>
-            <p class="small"><strong>Narayana Engineering College, Gudur</strong><br/>B.Tech — Computer Science and Engineering (2022 – 2026)<br/>CGPA: 8.5 / 10 (current)</p>
-
-            <p class="small"><strong>Relevant coursework:</strong> Data Structures & Algorithms, Operating Systems, DBMS, OOP in Java, Computer Networks, Web Technologies.</p>
-          </div>
-
-          <div>
-            <h3>Technical</h3>
-            <div style="margin-top:12px">
-              <div class="small muted"><strong>Languages:</strong> Java, Python, C, SQL, HTML, CSS, JavaScript</div>
-              <div class="small muted" style="margin-top:6px"><strong>Tools:</strong> Git, GitHub, MySQL, IntelliJ, VS Code, Linux</div>
-              <div class="small muted" style="margin-top:6px"><strong>Coding platforms:</strong> LeetCode, HackerRank, CodeChef</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="card reveal" aria-labelledby="projectsTitle">
-      <div class="section-inner">
-        <div class="section-title">
-          <span style="font-size:18px">🧩</span>
-          <div style="display:flex;flex-direction:column">
-            <div id="projectsTitle">Projects</div>
-            <div class="small muted">Selected works</div>
-          </div>
-        </div>
-
-        <div class="projects-grid">
-          <div class="project" tabindex="0" aria-label="Employee Management System">
-            <div class="meta">
-              <div style="font-weight:800">Employee Management System (2025)</div>
-              <div class="small muted">Console Java app — github.com/chenjisandeep</div>
-              <p class="small muted" style="margin-top:8px">Add/update/delete/view/search. OOP, exception handling, file storage. Tools: Java 17+</p>
-            </div>
-          </div>
-
-          <div class="project" tabindex="0" aria-label="Personal Portfolio">
-            <div class="meta">
-              <div style="font-weight:800">Personal Portfolio Website</div>
-              <div class="small muted">HTML • CSS • JS — github.com/chenjisandeep</div>
-              <p class="small muted" style="margin-top:8px">Responsive portfolio deployed on GitHub Pages. Clean UI and smooth navigation.</p>
-            </div>
-          </div>
-
-          <div class="project" tabindex="0" aria-label="Coursework projects">
-            <div class="meta">
-              <div style="font-weight:800">Coursework Projects</div>
-              <div class="small muted">DBMS, Networks, Algorithms</div>
-              <p class="small muted" style="margin-top:8px">Database mini-apps and algorithm assignments from coursework.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="card reveal" aria-labelledby="expTitle">
-      <div class="section-inner">
-        <div class="section-title">
-          <span style="font-size:18px">💼</span>
-          <div style="display:flex;flex-direction:column">
-            <div id="expTitle">Experience</div>
-            <div class="small muted">Internships</div>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="card small muted">
-            <strong>Java Programming Intern — CODTECH IT SOLUTIONS (Hyderabad)</strong><br/><span class="small">May 2025 – Jun 2025</span>
-            <ul class="small muted">
-              <li>Worked on OOP, collections, exception handling and file I/O.</li>
-              <li>Followed ISO 9001 workflows for documentation and code reviews.</li>
-            </ul>
-          </div>
-
-          <div class="card small muted">
-            <strong>Cyber Security Intern — AIMER Society (Andhra Pradesh)</strong><br/><span class="small">May 2024 – Jul 2024</span>
-            <ul class="small muted">
-              <li>Completed a 120‑hour program covering fundamentals and practical skills.</li>
-              <li>Exposure to threat analysis workflows and defensive techniques.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certs" class="card reveal" aria-labelledby="certsTitle">
-      <div class="section-inner">
-        <div class="section-title">
-          <span style="font-size:18px">🏅</span>
-          <div style="display:flex;flex-direction:column">
-            <div id="certsTitle">Certifications</div>
-            <div class="small muted">Selected highlights</div>
-          </div>
-        </div>
-
-        <ul class="small muted">
-          <li>Java Programming Internship — CODTECH (2025)</li>
-          <li>Cloud Computing — NPTEL</li>
-          <li>Cyber Security Internship — AIMER Society (2024)</li>
-          <li>Web Development — SoloLearn</li>
-          <li>Smart India Hackathon — Participant (2023)</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="card reveal" aria-labelledby="contactTitle">
-      <div class="section-inner">
-        <div class="section-title">
-          <span style="font-size:18px">✉️</span>
-          <div style="display:flex;flex-direction:column">
-            <div id="contactTitle">Contact</div>
-            <div class="small muted">Let's connect</div>
-          </div>
-        </div>
-
-        <div class="contact-grid">
-          <form id="contactForm" class="card" onsubmit="return handleContactSubmit(event)" aria-label="Contact form">
-            <label for="name">Full name</label>
-            <input id="name" type="text" required placeholder="Your name" />
-
-            <label for="email">Email</label>
-            <input id="email" type="email" required placeholder="you@example.com" />
-
-            <label for="message">Message</label>
-            <textarea id="message" rows="6" required placeholder="Tell me about your project or role"></textarea>
-
-            <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-              <button class="btn" type="submit">Send message</button>
-              <div class="muted small">Or email: <a href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a></div>
-            </div>
-          </form>
-
-          <aside class="card small muted">
-            <h4 style="margin-top:0">Quick links</h4>
-            <p class="small"><strong>Website:</strong> <a href="https://chenjisandeep.github.io/my-portfolio" target="_blank">chenjisandeep.github.io/my-portfolio</a></p>
-            <p class="small"><strong>GitHub:</strong> <a href="https://github.com/chenjisandeep" target="_blank">github.com/chenjisandeep</a></p>
-            <p class="small"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/chenjisandeep" target="_blank">linkedin.com/in/chenjisandeep</a></p>
-            <p class="small"><strong>Phone:</strong> +91 86880 23831</p>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <footer style="margin-top:18px"><div class="small muted">© <span id="year"></span> Sandeep Chenji — Built with HTML, CSS & JS</div></footer>
+    </div>
   </main>
 
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-title"><h2 style="margin:0">Selected Projects</h2><div class="small muted">Work that shows impact</div></div>
+
+      <div class="projects">
+        <div class="card">
+          <div class="project-title">Employee Management System (2025)</div>
+          <div class="small muted">Console Java application — github.com/chenjisandeep</div>
+          <p class="muted small">Modular OOP design for CRUD operations, file-based persistence, exception handling and input validation.</p>
+        </div>
+
+        <div class="card">
+          <div class="project-title">Personal Portfolio</div>
+          <div class="small muted">HTML • CSS • JavaScript</div>
+          <p class="muted small">Responsive portfolio deployed on GitHub Pages with accessible navigation and performance optimizations.</p>
+        </div>
+
+        <div class="card">
+          <div class="project-title">Coursework & Mini Apps</div>
+          <div class="small muted">DBMS, Networks, Algorithms</div>
+          <p class="muted small">Database-backed mini-apps and algorithmic implementations from coursework.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-title"><h2 style="margin:0">Experience</h2><div class="small muted">Internships & practical learning</div></div>
+
+      <div class="timeline">
+        <div class="item">
+          <div class="dot" aria-hidden></div>
+          <div>
+            <strong>Java Programming Intern — CODTECH IT SOLUTIONS</strong> <span class="small muted">May 2025 – Jun 2025</span>
+            <div class="small muted">Worked on OOP, collections, exception handling and file I/O following ISO 9001 workflows. Weekly progress reports to mentors.</div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="dot" aria-hidden></div>
+          <div>
+            <strong>Cyber Security Intern — AIMER Society</strong> <span class="small muted">May 2024 – Jul 2024</span>
+            <div class="small muted">Completed 120-hour program focused on fundamentals, tools and defensive techniques. Verified by program lead.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Education -->
+  <section id="skills">
+    <div class="section-inner cols-2">
+      <div>
+        <h3 style="margin-top:0">Education</h3>
+        <p class="small muted"><strong>Narayana Engineering College, Gudur</strong><br/>B.Tech — Computer Science and Engineering (2022 – 2026)<br/>CGPA: 8.5 / 10 (current)</p>
+
+        <h3 style="margin-top:12px">Certifications</h3>
+        <ul class="small muted">
+          <li>Java Programming Internship — CODTECH (2025)</li>
+          <li>Cyber Security Internship — AIMER Society (2024)</li>
+          <li>Cloud Computing — NPTEL</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Technical</h3>
+        <div class="skills-grid" style="margin-top:12px">
+          <div class="pill">Java</div>
+          <div class="pill">Python</div>
+          <div class="pill">HTML / CSS / JS</div>
+          <div class="pill">SQL</div>
+          <div class="pill">Git • GitHub</div>
+          <div class="pill">IntelliJ • VS Code</div>
+        </div>
+
+        <h3 style="margin-top:18px">Coding Platforms</h3>
+        <div class="small muted">LeetCode • HackerRank • CodeChef</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-title"><h2 style="margin:0">Contact</h2><div class="small muted">Let's work together</div></div>
+
+      <div class="contact-grid">
+        <form onsubmit="return handleContact(event)">
+          <label for="name">Name</label>
+          <input id="name" required placeholder="Your name" />
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="you@example.com" />
+          <label for="message">Message</label>
+          <textarea id="message" rows="6" required placeholder="Tell me about the role or project"></textarea>
+          <div style="margin-top:12px"><button class="btn" type="submit">Send message</button></div>
+        </form>
+
+        <aside class="card small muted">
+          <h4 style="margin-top:0">Quick info</h4>
+          <p class="small"><strong>Email:</strong> <a href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a></p>
+          <p class="small"><strong>Phone:</strong> +91 86880 23831</p>
+          <p class="small"><strong>Site:</strong> <a href="https://chenjisandeep.github.io/my-portfolio" target="_blank">chenjisandeep.github.io/my-portfolio</a></p>
+          <p class="small"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/chenjisandeep" target="_blank">linkedin.com/in/chenjisandeep</a></p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap"><div class="small muted">© <span id="year"></span> Sandeep Chenji — Built with HTML, CSS & JS</div></div>
+  </footer>
+
   <script>
-    const q = s => document.querySelector(s);
-    const qa = s => Array.from(document.querySelectorAll(s));
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // theme
-    const themeToggle = q('#themeToggle');
-    function setTheme(light){ document.body.classList.toggle('light', !!light); themeToggle.setAttribute('aria-pressed', !!light); themeToggle.innerHTML = light ? '<i class="fa-regular fa-moon"></i>' : '<i class="fa-regular fa-sun"></i>'; localStorage.setItem('portfolio_theme', light ? 'light' : 'dark'); }
-    setTheme(localStorage.getItem('portfolio_theme') === 'light');
-    themeToggle.addEventListener('click', ()=> setTheme(!document.body.classList.contains('light')));
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'}); }));
 
-    // mobile menu
-    const menuBtn = q('#menuBtn'), navLinks = q('#navLinks');
-    menuBtn && menuBtn.addEventListener('click', ()=>{ const open = navLinks.classList.toggle('show'); menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); menuBtn.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>'; });
+    // basic contact form mailto fallback
+    function handleContact(e){ e.preventDefault(); const n = document.getElementById('name').value.trim(); const em = document.getElementById('email').value.trim(); const m = document.getElementById('message').value.trim(); if(!n||!em||!m){ alert('Please fill all fields'); return false } const subject = encodeURIComponent('Portfolio contact from '+n); const body = encodeURIComponent(m+'
 
-    qa('.nav-link').forEach(a => { a.addEventListener('click', (e)=>{ e.preventDefault(); const id = a.getAttribute('href'); document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'}); if(navLinks.classList.contains('show')) { navLinks.classList.remove('show'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; menuBtn.setAttribute('aria-expanded','false') } qa('.nav-link').forEach(x => x.classList.remove('active')); a.classList.add('active'); }) });
-
-    // reveal (simple fade-in) -- keep light-weight
-    const reveals = qa('.reveal');
-    const obs = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); obs.unobserve(en.target); } }); }, {threshold:0.12});
-    reveals.forEach(r => obs.observe(r));
-
-    // contact form mailto fallback
-    function handleContactSubmit(e){ e.preventDefault(); const name = q('#name').value.trim(), email = q('#email').value.trim(), msg = q('#message').value.trim(); if(!name||!email||!msg){ alert('Please complete all fields'); return false; } const subject = encodeURIComponent(`Portfolio contact from ${name}`); const body = encodeURIComponent(`${msg}
-
-— ${name}
-${email}`); window.location.href = `mailto:chenjisandeep@gmail.com?subject=${subject}&body=${body}`; return false; }
-
-    // set year
-    q('#year').textContent = new Date().getFullYear();
-
-    // Accessibility: close mobile menu on outside click
-    document.addEventListener('click', (e)=>{ if(navLinks.classList.contains('show') && !e.composedPath().includes(navLinks) && !e.composedPath().includes(menuBtn)) { navLinks.classList.remove('show'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; menuBtn.setAttribute('aria-expanded','false') } });
+— '+n+'
+'+em); window.location.href = 'mailto:chenjisandeep@gmail.com?subject='+subject+'&body='+body; return false }
   </script>
 </body>
 </html>
