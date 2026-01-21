@@ -1,260 +1,659 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sandeep Chenji — Software Engineer (Student)</title>
-  <meta name="description" content="Portfolio of Sandeep Chenji — Java • Web • Problem Solving. Contact: chenjisandeep@gmail.com">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <style>
-    :root{
-      --bg:#0b1220; --card:#0f1726; --muted:#9aa4b2; --accent:#00c2ff; --glass: rgba(255,255,255,0.04);
-      --radius:14px; --max-width:1100px; --text:#e6eef6; --shadow: 0 12px 48px rgba(2,6,23,0.6);
+    <!-- Critical ATS/SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sandeep Chenji - Computer Science Engineering student specializing in Java Development and Web Development. Seeking software developer roles with strong OOP, Java, SQL skills.">
+    <meta name="keywords" content="Java Developer, Software Developer, Computer Science Student, Web Development, OOP, SQL, HTML, CSS, JavaScript, Portfolio">
+    <meta name="author" content="Sandeep Chenji">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Sandeep Chenji | Computer Science Portfolio">
+    <meta property="og:description" content="Computer Science Engineering student specializing in Java Development and Web Development.">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data for ATS -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sandeep Chenji",
+        "jobTitle": "Computer Science Student | Java Developer",
+        "url": "https://chenjisandeep.github.io",
+        "sameAs": [
+            "https://github.com/chenjisandeep",
+            "https://linkedin.com/in/chenjisandeep"
+        ],
+        "email": "chenjisandeep@gmail.com",
+        "telephone": "+91-86880-23831",
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Narayana Engineering College, Gudur"
+        },
+        "knowsAbout": ["Java", "OOP", "SQL", "Web Development", "HTML", "CSS", "JavaScript"],
+        "seeks": "Software Developer Role"
     }
-    *{box-sizing:border-box} html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text);background:linear-gradient(180deg,#061223 0%,var(--bg) 60%)}
-    a{color:inherit}
-
-    /* Container */
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
-
-    /* Header */
-    header{position:fixed;inset:0 0 auto 0;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:140;background:transparent}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#6ef1ff);color:#001;font-weight:800}
-    nav{display:flex;gap:16px;align-items:center}
-    .nav a{padding:8px 12px;border-radius:10px;font-weight:600;text-decoration:none;color:var(--muted)}
-    .nav a:hover{color:var(--accent);background:rgba(255,255,255,0.02)}
-
-    .hero{min-height:100vh;display:grid;place-items:center;padding:0 28px}
-    .hero-card{width:100%;max-width:1200px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:18px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:center}
-
-    .profile{width:220px;border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(2,6,23,0.5);border:3px solid rgba(255,255,255,0.03)}
-    .profile img{width:100%;height:100%;object-fit:cover;display:block}
-
-    .hero-head h1{margin:0;font-size:30px;letter-spacing:0.2px}
-    .hero-head p.lead{margin:8px 0 14px;color:var(--muted);max-width:65ch}
-    .badge{display:inline-block;background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-weight:700;color:var(--accent);margin-right:8px}
-
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{background:var(--accent);color:#001;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-
-    /* Quick stats */
-    .stats{display:flex;gap:12px;margin-top:16px}
-    .stat{background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:700;color:var(--muted)}
-
-    /* Sections */
-    section{padding:48px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
-    .section-inner{max-width:1100px;margin:0 auto;padding:0 28px}
-    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-
-    /* Grid layouts */
-    .cols-2{display:grid;grid-template-columns:360px 1fr;gap:20px}
-    @media (max-width:980px){ .hero-card{grid-template-columns:1fr;grid-auto-rows:min-content}.cols-2{grid-template-columns:1fr}.profile{width:160px}} 
-
-    /* Skills */
-    .skills-grid{display:flex;flex-wrap:wrap;gap:12px}
-    .pill{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--muted)}
-
-    /* Projects */
-    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:1100px){ .projects{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:640px){ .projects{grid-template-columns:1fr} }
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:16px;border-radius:12px}
-    .project-title{font-weight:800}
-    .muted{color:var(--muted)}
-
-    /* Timeline / Experience */
-    .timeline{display:grid;gap:12px}
-    .timeline .item{display:flex;gap:12px;align-items:flex-start}
-    .timeline .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:6px}
-
-    /* Contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
-    @media (max-width:880px){ .contact-grid{grid-template-columns:1fr} }
-    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);outline:none}
-
-    footer{padding:28px;text-align:center;color:var(--muted)}
-
-    /* subtle interactions */
-    .project:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.35);transition:all .28s var(--ease)}
-
-  </style>
+    </script>
+    
+    <title>Sandeep Chenji | Computer Science Student | Java Developer | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="canonical" href="https://chenjisandeep.github.io">
 </head>
 <body>
-
-  <header>
-    <div class="brand">
-      <div class="logo">SC</div>
-      <div class="small muted">Sandeep Chenji — Software Engineer (Student)</div>
-    </div>
-    <nav class="nav">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main class="hero">
-    <div class="hero-card">
-      <div class="profile">
-        <img src="images/profile.jpg" alt="Sandeep Chenji profile" />
-      </div>
-
-      <div class="hero-head">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-          <span class="badge">B.Tech CSE · 2022–2026</span>
-          <div class="muted">Venkatagiri, Andhra Pradesh</div>
+    <!-- Navigation Bar -->
+    <header id="navbar" class="navbar">
+        <div class="container">
+            <a href="#home" class="logo" aria-label="Sandeep Chenji Portfolio Home">Sandeep Chenji</a>
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav-links-container" aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <h1>Hi — I'm <span style="color:var(--accent)">Sandeep Chenji</span></h1>
-        <p class="lead muted">A pragmatic Java developer and web engineer building reliable software and polished front-ends. I solve problems, write maintainable code, and ship projects that demonstrate engineering fundamentals.</p>
+    <!-- Hero Section -->
+    <main>
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="hero-title" class="hero-title">Sandeep Chenji</h1>
+                    <p class="hero-subtitle">Computer Science Engineering Student | Java Developer | Web Development</p>
+                    <p class="hero-description">Aspiring Software Developer with strong Java, OOP, and SQL skills. Currently seeking entry-level software development roles to apply technical knowledge and problem-solving abilities.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="https://drive.google.com/your-resume-link" class="btn btn-secondary" download target="_blank" rel="noopener noreferrer">Download Resume</a>
+                    </div>
+                    <div class="hero-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>B.Tech CSE Student</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-code"></i>
+                            <span>Java Specialist</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-search"></i>
+                            <span>Seeking Entry-Level Roles</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <h3>Key Qualifications</h3>
+                        </div>
+                        <ul class="qualifications">
+                            <li><i class="fas fa-check-circle"></i> Strong Java & OOP Fundamentals</li>
+                            <li><i class="fas fa-check-circle"></i> SQL Database Management</li>
+                            <li><i class="fas fa-check-circle"></i> Web Development (HTML, CSS, JS)</li>
+                            <li><i class="fas fa-check-circle"></i> Problem Solving & Algorithms</li>
+                            <li><i class="fas fa-check-circle"></i> Git Version Control</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="cta-row">
-          <a class="btn" href="sandeep_resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-          <a class="btn ghost" href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a>
-          <a class="btn ghost" href="https://github.com/chenjisandeep" target="_blank">GitHub</a>
-          <a class="btn ghost" href="https://linkedin.com/in/chenjisandeep" target="_blank">LinkedIn</a>
+        <!-- About Section -->
+        <section id="about" class="section about" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="about-title" class="section-title">About Me</h2>
+                    <p class="section-subtitle">Passionate Computer Science Student ready for software development challenges</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a <strong>Computer Science Engineering undergraduate</strong> with strong knowledge of <strong>Java, SQL, and web technologies</strong>. I have hands-on experience developing Java applications and responsive web interfaces, along with exposure to cybersecurity practices and machine learning concepts.</p>
+                        <p>Currently seeking an <strong>entry-level Software Developer role</strong> where I can apply <strong>object-oriented programming, problem-solving skills, and software development fundamentals</strong> while continuously improving my technical expertise.</p>
+                        <div class="career-goal">
+                            <h3><i class="fas fa-bullseye"></i> Career Objective</h3>
+                            <p>To secure a challenging position in a reputable organization to expand my learnings, knowledge, and skills. Seeking a software developer role where I can contribute to team success while developing my professional skills.</p>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>3+</h3>
+                                <p>Projects Completed</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>8+</h3>
+                                <p>Certifications</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>2</h3>
+                                <p>Internships</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>120+</h3>
+                                <p>Training Hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section - Reorganized for ATS scanning -->
+        <section id="skills" class="section skills" aria-labelledby="skills-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="skills-title" class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Core competencies and technologies I work with</p>
+                </div>
+                <div class="skills-container">
+                    <!-- Primary Skills (Most Relevant for Jobs) -->
+                    <div class="skill-category primary-skills">
+                        <h3><i class="fas fa-star"></i> Primary Skills</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Java Programming</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Object-Oriented Programming (OOP)</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level-bar" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">SQL & MySQL</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info">
+                                    <span class="skill-name">Web Development</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-level-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical Skills -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming & Web</h3>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Java</li>
+                            <li class="skill-tag">Python (Basic)</li>
+                            <li class="skill-tag">JavaScript (Basic)</li>
+                            <li class="skill-tag">HTML5</li>
+                            <li class="skill-tag">CSS3</li>
+                            <li class="skill-tag">SQL</li>
+                            <li class="skill-tag">MySQL</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Tools & Concepts -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools & Concepts</h3>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Git</li>
+                            <li class="skill-tag">GitHub</li>
+                            <li class="skill-tag">VS Code</li>
+                            <li class="skill-tag">Eclipse IDE</li>
+                            <li class="skill-tag">Data Structures</li>
+                            <li class="skill-tag">Algorithms</li>
+                            <li class="skill-tag">Problem Solving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience" aria-labelledby="experience-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="experience-title" class="section-title">Professional Experience</h2>
+                    <p class="section-subtitle">Internships and practical work experience</p>
+                </div>
+                <div class="experience-container">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-title">
+                                <h3>Java Programming Intern</h3>
+                                <span class="experience-company">CODTECH IT SOLUTIONS, Hyderabad</span>
+                            </div>
+                            <span class="experience-date">May 2025 – June 2025</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Developed and tested <strong>Java-based modules</strong> using <strong>OOP principles, collections, exception handling, and file I/O</strong></li>
+                            <li>Improved code readability and maintainability by following <strong>clean coding standards</strong></li>
+                            <li>Gained exposure to <strong>real-world software development workflows</strong> and <strong>peer code reviews</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-title">
+                                <h3>Cyber Security Intern</h3>
+                                <span class="experience-company">AIMER Society, Andhra Pradesh</span>
+                            </div>
+                            <span class="experience-date">May 2024 – July 2024</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Completed a <strong>120-hour cybersecurity internship</strong> covering fundamentals and hands-on security practices</li>
+                            <li>Gained exposure to <strong>security tools, threat analysis workflows, and defensive techniques</strong> under APSCHE</li>
+                            <li>Internship experience verified by <strong>D. Sai Satish, President, AIMER Society</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="projects-title" class="section-title">Projects Portfolio</h2>
+                    <p class="section-subtitle">Practical applications of technical skills</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Meta-Analysis of Automated Fake News Detection Methods</h3>
+                            <span class="project-type">Final Year B.Tech Project</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Machine Learning</span>
+                            <span>NLP</span>
+                            <span>Data Analysis</span>
+                        </div>
+                        <p class="project-description">Built and evaluated <strong>machine learning models</strong> (Logistic Regression, Random Forest, SVM, LSTM) for fake news detection. Applied <strong>NLP techniques</strong> (TF-IDF, Doc2Vec, Word2Vec) and achieved <strong>96% classification accuracy</strong>.</p>
+                        <div class="project-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-trophy"></i>
+                                <span>96% Accuracy</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-chart-line"></i>
+                                <span>ML Models</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Employee Management System</h3>
+                            <span class="project-type">Java Application</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>OOP</span>
+                            <span>File Handling</span>
+                            <span>Console App</span>
+                        </div>
+                        <p class="project-description">Console-based <strong>Java application</strong> for employee record management with <strong>CRUD operations</strong> (add, update, delete, view, search). Designed with <strong>modular OOP structure</strong> and exception handling.</p>
+                        <a href="https://github.com/chenjisandeep" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        <div class="project-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-database"></i>
+                                <span>File Storage</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-code"></i>
+                                <span>Clean Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Personal Portfolio Website</h3>
+                            <span class="project-type">Web Development Project</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Responsive Design</span>
+                        </div>
+                        <p class="project-description"><strong>Responsive portfolio website</strong> showcasing skills, projects, and experience. Implemented <strong>clean UI, smooth navigation, and performance optimizations</strong>. Deployed using GitHub Pages.</p>
+                        <a href="https://github.com/chenjisandeep" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                        <div class="project-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-rocket"></i>
+                                <span>Live Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section certifications" aria-labelledby="certifications-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="certifications-title" class="section-title">Certifications & Achievements</h2>
+                    <p class="section-subtitle">Professional certifications and recognitions</p>
+                </div>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Java Programming Internship</h3>
+                            <p>CODTECH IT Solutions</p>
+                            <span class="cert-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Cyber Security Internship</h3>
+                            <p>AIMER Society</p>
+                            <span class="cert-date">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>OOPs in Java Certification</h3>
+                            <p>Simplilearn / SkillUp</p>
+                            <span class="cert-date">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Cloud Computing</h3>
+                            <p>NPTEL</p>
+                            <span class="cert-date">2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Python & Data Science</h3>
+                            <p>CodeTantra</p>
+                            <span class="cert-date">2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Problem Solving (Basic)</h3>
+                            <p>HackerRank</p>
+                            <span class="cert-date">2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Web Development</h3>
+                            <p>SoloLearn</p>
+                            <span class="cert-date">2023</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="certification-content">
+                            <h3>Smart India Hackathon</h3>
+                            <p>Participant</p>
+                            <span class="cert-date">2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section education" aria-labelledby="education-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="education-title" class="section-title">Education Background</h2>
+                    <p class="section-subtitle">Academic qualifications and achievements</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-info">
+                            <h3>Bachelor of Technology in Computer Science and Engineering</h3>
+                            <p class="education-institution">Narayana Engineering College, Gudur</p>
+                            <p class="education-duration">2022 – 2026 (Expected)</p>
+                        </div>
+                    </div>
+                    <div class="education-details">
+                        <div class="academic-performance">
+                            <div class="cgpa">
+                                <span class="cgpa-label">Current CGPA:</span>
+                                <span class="cgpa-value">8.5 / 10.0</span>
+                            </div>
+                            <div class="academic-status">
+                                <span class="status-badge">Final Year Student</span>
+                                <span class="status-badge">Graduating 2026</span>
+                            </div>
+                        </div>
+                        <div class="education-highlights">
+                            <h4>Academic Highlights:</h4>
+                            <ul>
+                                <li>Currently in final year of B.Tech CSE program</li>
+                                <li>Active participant in coding competitions and hackathons</li>
+                                <li>Completed multiple technical certifications alongside academics</li>
+                                <li>Developed practical projects applying classroom knowledge</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="contact-title" class="section-title">Contact Information</h2>
+                    <p class="section-subtitle">Let's connect for opportunities</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email Address</h3>
+                                <a href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a>
+                                <p>Primary contact method</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone Number</h3>
+                                <a href="tel:+918688023831">+91 86880 23831</a>
+                                <p>Available for calls</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h3>LinkedIn Profile</h3>
+                                <a href="https://linkedin.com/in/chenjisandeep" target="_blank" rel="noopener noreferrer">linkedin.com/in/chenjisandeep</a>
+                                <p>Professional network</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <h3>GitHub Portfolio</h3>
+                                <a href="https://github.com/chenjisandeep" target="_blank" rel="noopener noreferrer">github.com/chenjisandeep</a>
+                                <p>Code repositories</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Venkatagiri, Andhra Pradesh, India</p>
+                                <p>Open to relocation for opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <div class="contact-form-header">
+                            <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
+                            <p>Interested in hiring or collaborating? Get in touch!</p>
+                        </div>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                                <div class="error-message" id="nameError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                                <div class="error-message" id="emailError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Job opportunity or collaboration">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Your message here..."></textarea>
+                                <div class="error-message" id="messageError"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <div class="form-success" id="formSuccess">Message sent successfully! I'll get back to you soon.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Sandeep Chenji</h3>
+                    <p>Computer Science Engineering Student | Java Developer</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/chenjisandeep" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/chenjisandeep" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:chenjisandeep@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+918688023831" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; <span id="currentYear"></span> Sandeep Chenji. All rights reserved.</p>
+                    <p>Designed for optimal ATS parsing and recruiter review</p>
+                </div>
+            </div>
         </div>
+    </footer>
 
-        <div class="stats">
-          <div class="stat">Java • Backend</div>
-          <div class="stat">HTML/CSS/JS</div>
-          <div class="stat">Problem Solving</div>
-        </div>
-      </div>
-    </div>
-  </main>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-  <!-- Projects -->
-  <section id="projects">
-    <div class="section-inner">
-      <div class="section-title"><h2 style="margin:0">Selected Projects</h2><div class="small muted">Work that shows impact</div></div>
-
-      <div class="projects">
-        <div class="card">
-          <div class="project-title">Employee Management System (2025)</div>
-          <div class="small muted">Console Java application — github.com/chenjisandeep</div>
-          <p class="muted small">Modular OOP design for CRUD operations, file-based persistence, exception handling and input validation.</p>
-        </div>
-
-        <div class="card">
-          <div class="project-title">Personal Portfolio</div>
-          <div class="small muted">HTML • CSS • JavaScript</div>
-          <p class="muted small">Responsive portfolio deployed on GitHub Pages with accessible navigation and performance optimizations.</p>
-        </div>
-
-        <div class="card">
-          <div class="project-title">Coursework & Mini Apps</div>
-          <div class="small muted">DBMS, Networks, Algorithms</div>
-          <p class="muted small">Database-backed mini-apps and algorithmic implementations from coursework.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience">
-    <div class="section-inner">
-      <div class="section-title"><h2 style="margin:0">Experience</h2><div class="small muted">Internships & practical learning</div></div>
-
-      <div class="timeline">
-        <div class="item">
-          <div class="dot" aria-hidden></div>
-          <div>
-            <strong>Java Programming Intern — CODTECH IT SOLUTIONS</strong> <span class="small muted">May 2025 – Jun 2025</span>
-            <div class="small muted">Worked on OOP, collections, exception handling and file I/O following ISO 9001 workflows. Weekly progress reports to mentors.</div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="dot" aria-hidden></div>
-          <div>
-            <strong>Cyber Security Intern — AIMER Society</strong> <span class="small muted">May 2024 – Jul 2024</span>
-            <div class="small muted">Completed 120-hour program focused on fundamentals, tools and defensive techniques. Verified by program lead.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills & Education -->
-  <section id="skills">
-    <div class="section-inner cols-2">
-      <div>
-        <h3 style="margin-top:0">Education</h3>
-        <p class="small muted"><strong>Narayana Engineering College, Gudur</strong><br/>B.Tech — Computer Science and Engineering (2022 – 2026)<br/>CGPA: 8.5 / 10 (current)</p>
-
-        <h3 style="margin-top:12px">Certifications</h3>
-        <ul class="small muted">
-          <li>Java Programming Internship — CODTECH (2025)</li>
-          <li>Cyber Security Internship — AIMER Society (2024)</li>
-          <li>Cloud Computing — NPTEL</li>
-        </ul>
-      </div>
-
-      <div>
-        <h3>Technical</h3>
-        <div class="skills-grid" style="margin-top:12px">
-          <div class="pill">Java</div>
-          <div class="pill">Python</div>
-          <div class="pill">HTML / CSS / JS</div>
-          <div class="pill">SQL</div>
-          <div class="pill">Git • GitHub</div>
-          <div class="pill">IntelliJ • VS Code</div>
-        </div>
-
-        <h3 style="margin-top:18px">Coding Platforms</h3>
-        <div class="small muted">LeetCode • HackerRank • CodeChef</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="section-inner">
-      <div class="section-title"><h2 style="margin:0">Contact</h2><div class="small muted">Let's work together</div></div>
-
-      <div class="contact-grid">
-        <form onsubmit="return handleContact(event)">
-          <label for="name">Name</label>
-          <input id="name" required placeholder="Your name" />
-          <label for="email">Email</label>
-          <input id="email" type="email" required placeholder="you@example.com" />
-          <label for="message">Message</label>
-          <textarea id="message" rows="6" required placeholder="Tell me about the role or project"></textarea>
-          <div style="margin-top:12px"><button class="btn" type="submit">Send message</button></div>
-        </form>
-
-        <aside class="card small muted">
-          <h4 style="margin-top:0">Quick info</h4>
-          <p class="small"><strong>Email:</strong> <a href="mailto:chenjisandeep@gmail.com">chenjisandeep@gmail.com</a></p>
-          <p class="small"><strong>Phone:</strong> +91 86880 23831</p>
-          <p class="small"><strong>Site:</strong> <a href="https://chenjisandeep.github.io/my-portfolio" target="_blank">chenjisandeep.github.io/my-portfolio</a></p>
-          <p class="small"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/chenjisandeep" target="_blank">linkedin.com/in/chenjisandeep</a></p>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap"><div class="small muted">© <span id="year"></span> Sandeep Chenji — Built with HTML, CSS & JS</div></div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'}); }));
-
-    // basic contact form mailto fallback
-    function handleContact(e){ e.preventDefault(); const n = document.getElementById('name').value.trim(); const em = document.getElementById('email').value.trim(); const m = document.getElementById('message').value.trim(); if(!n||!em||!m){ alert('Please fill all fields'); return false } const subject = encodeURIComponent('Portfolio contact from '+n); const body = encodeURIComponent(m+'
-
-— '+n+'
-'+em); window.location.href = 'mailto:chenjisandeep@gmail.com?subject='+subject+'&body='+body; return false }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
