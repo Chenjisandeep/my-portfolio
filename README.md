@@ -5,7 +5,7 @@ A personal portfolio website for Sandeep Chenji, a Computer Science student and 
 🔗 Live Demo
 
 View Live Portfolio
- https://chenjisandeep.github.io/my-portfolio/#skills
+ https://chenjisandeep.github.io/my-portfolio
 💻 Features
 
 Responsive Design: Works on desktop, tablet, and mobile devices.
