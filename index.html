@@ -1,182 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Critical ATS/SEO Meta Tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sandeep Chenji - Computer Science Engineering student specializing in Java Development and Web Development. Seeking software developer roles with strong OOP, Java, SQL skills.">
-    <meta name="keywords" content="Java Developer, Software Developer, Computer Science Student, Web Development, OOP, SQL, HTML, CSS, JavaScript, Portfolio">
-    <meta name="author" content="Sandeep Chenji">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Sandeep Chenji | Computer Science Portfolio">
-    <meta property="og:description" content="Computer Science Engineering student specializing in Java Development and Web Development.">
-    <meta property="og:type" content="website">
-    
-    <!-- Structured Data for ATS -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Sandeep Chenji",
-        "jobTitle": "Computer Science Student | Java Developer",
-        "url": "https://chenjisandeep.github.io",
-        "sameAs": [
-            "https://github.com/chenjisandeep",
-            "https://linkedin.com/in/chenjisandeep"
-        ],
-        "email": "chenjisandeep@gmail.com",
-        "telephone": "+91-86880-23831",
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Narayana Engineering College, Gudur"
-        },
-        "knowsAbout": ["Java", "OOP", "SQL", "Web Development", "HTML", "CSS", "JavaScript"],
-        "seeks": "Software Developer Role"
-    }
-    </script>
-    
-    <title>Sandeep Chenji | Computer Science Student | Java Developer | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="canonical" href="https://chenjisandeep.github.io">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandeep Chenji — Application Support Engineer</title>
+<meta name="description" content="Sandeep Chenji — entry-level Application Support / Technical Support Engineer. SQL, Linux, REST APIs, troubleshooting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1416;
+    --surface: #141B1E;
+    --surface-alt: #182023;
+    --border: #263033;
+    --border-soft: #1E2528;
+    --text: #E7ECEC;
+    --text-muted: #91A4A9;
+    --text-faint: #5E6E72;
+    --accent: #4FD1AE;
+    --accent-dim: #3AA88A;
+    --accent-warm: #E3A34D;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --maxw: 860px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+
+  ::selection{ background: var(--accent); color: #06110E; }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(14,20,22,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .nav-inner{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-id{
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+  .nav-id span{ color: var(--accent); }
+  .nav-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+  }
+  .nav-links li{ margin-right: 22px; }
+  .nav-links li:last-child{ margin-right: 0; }
+  .nav-links a{
+    text-decoration: none;
+    color: var(--text-muted);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .nav-links a:hover{ color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 76px 0 56px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .hero-prompt{
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    margin: 0 0 18px;
+  }
+  .hero-prompt .cwd{ color: var(--accent-dim); }
+  h1.hero-name{
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 22px;
+    line-height: 1.05;
+  }
+  .readout{
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 0 30px;
+  }
+  .readout .line{
+    display: block;
+    margin-bottom: 6px;
+    opacity: 0;
+    animation: reveal-line .5s ease forwards;
+  }
+  .readout .line:nth-child(1){ animation-delay: .1s; }
+  .readout .line:nth-child(2){ animation-delay: .4s; }
+  .readout .line:nth-child(3){ animation-delay: .7s; }
+  .readout .line:nth-child(4){ animation-delay: 1s; }
+  @keyframes reveal-line{ to{ opacity: 1; } }
+  .readout .k{ color: var(--text-faint); }
+  .readout .v{ color: var(--text); }
+  .readout .v.status{ color: var(--accent); }
+  .cursor{
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background: var(--accent);
+    vertical-align: -2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  .cta-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .btn{
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    padding: 11px 18px;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: border-color .15s ease, background .15s ease, color .15s ease;
+    display: inline-block;
+  }
+  .btn-primary{
+    background: var(--accent);
+    color: #06110E;
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+  .btn-primary:hover{ background: var(--accent-dim); border-color: var(--accent-dim); }
+  .btn-ghost{ color: var(--text); }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    gap: 12px;
+  }
+  h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .section-tag{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+
+  .lede{
+    max-width: 66ch;
+    color: var(--text-muted);
+    font-size: 1.02rem;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border-soft);
+    border: 1px solid var(--border-soft);
+  }
+  .skill-panel{
+    background: var(--surface);
+    padding: 20px 22px;
+  }
+  .skill-cat{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0 0 12px;
+  }
+  .dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex: none;
+  }
+  .chip-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .chip{
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 4px 9px;
+    background: var(--surface-alt);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    border: 1px solid var(--border-soft);
+    background: var(--surface);
+    padding: 24px 26px;
+    margin-bottom: 18px;
+  }
+  .project:last-child{ margin-bottom: 0; }
+  .project-top{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .project-title{
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .status-pill{
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 3px;
+    padding: 3px 9px;
+    white-space: nowrap;
+    height: fit-content;
+  }
+  .stack{
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    margin: 0 0 14px;
+  }
+  .project p.desc{
+    color: var(--text-muted);
+    margin: 0 0 14px;
+    max-width: 68ch;
+  }
+  .project ul{
+    margin: 0 0 16px;
+    padding-left: 20px;
+    color: var(--text-muted);
+  }
+  .project li{ margin-bottom: 5px; }
+  .repo-link{
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .repo-link:hover{ border-bottom-color: var(--accent); }
+
+  /* ---------- EXPERIENCE ---------- */
+  .log-entry{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-soft);
+  }
+  .log-entry:first-child{ border-top: none; padding-top: 0; }
+  .log-date{
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    padding-top: 3px;
+  }
+  .log-title{
+    font-weight: 600;
+    margin: 0 0 4px;
+    font-size: 1.02rem;
+  }
+  .log-org{ color: var(--text-muted); font-size: 0.9rem; margin: 0 0 10px; }
+  .log-entry ul{
+    margin: 0;
+    padding-left: 18px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  .log-entry li{ margin-bottom: 4px; }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border-soft);
+  }
+  .edu-row:first-child{ border-top: none; padding-top: 0; }
+  .edu-name{ font-weight: 600; margin: 0 0 2px; }
+  .edu-org{ color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+  .edu-meta{
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .ach-list{ list-style: none; margin: 0; padding: 0; }
+  .ach-list li{
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-soft);
+    color: var(--text-muted);
+  }
+  .ach-list li:first-child{ border-top: none; padding-top: 0; }
+  .ach-list .sq{
+    width: 6px; height: 6px;
+    background: var(--accent-warm);
+    margin-top: 8px;
+    flex: none;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 44px 0 60px;
+  }
+  .contact-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 24px;
+  }
+  .contact-item{ font-family: var(--mono); font-size: 0.85rem; }
+  .contact-item .k{ color: var(--text-faint); display: block; margin-bottom: 3px; font-size: 0.75rem; }
+  .contact-item a{ color: var(--accent); text-decoration: none; }
+  .contact-item a:hover{ text-decoration: underline; }
+  .foot-meta{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    border-top: 1px solid var(--border-soft);
+    padding-top: 20px;
+  }
+
+  @media (max-width: 640px){
+    .wrap, .nav-inner{ padding-left: 20px; padding-right: 20px; }
+    .skills-grid{ grid-template-columns: 1fr; }
+    .log-entry{ grid-template-columns: 1fr; gap: 6px; }
+    .edu-row{ grid-template-columns: 1fr; }
+    .edu-meta{ text-align: left; }
+    .nav-links{ gap: 14px; font-size: 0.74rem; }
+    .hero{ padding: 52px 0 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation: none; }
+    .readout .line{ animation: none; opacity: 1; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header id="navbar" class="navbar">
-        <div class="container">
-            <a href="#home" class="logo" aria-label="Sandeep Chenji Portfolio Home">Sandeep Chenji</a>
-            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav-links-container" aria-label="Main Navigation">
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                    <li><a href="#education" class="nav-link">Education</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-id">sandeep<span>@</span>support</div>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="Sandeep_Chenji_Application_Support_Resume.pdf">Résumé</a></li>
+      <li><a href="https://github.com/chenjisandeep">GitHub</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="hero-prompt"><span class="cwd">sandeep@support</span>:~$ whoami</p>
+    <h1 class="hero-name">Sandeep Chenji</h1>
+    <p class="readout" id="readout" aria-label="Profile summary">
+      <span class="line"><span class="k">role     </span><span class="v">Application Support Engineer — Entry Level</span></span>
+      <span class="line"><span class="k">focus    </span><span class="v">SQL, Linux, REST APIs, Troubleshooting</span></span>
+      <span class="line"><span class="k">location </span><span class="v">Hyderabad, Telangana, India</span></span>
+      <span class="line"><span class="k">status   </span><span class="v status">available — immediate</span><span class="cursor" id="cursor"></span></span>
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="Sandeep_Chenji_Application_Support_Resume.pdf">Download résumé</a>
+      <a class="btn btn-ghost" href="mailto:chenjisandeep@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/chenjisandeep/">LinkedIn</a>
+    </div>
+  </section>
+
+  <section id="profile">
+    <div class="section-head">
+      <h2>Profile</h2>
+      <span class="section-tag">cat ./profile.md</span>
+    </div>
+    <p class="lede">
+      Computer Science and Engineering graduate with hands-on skills in SQL, Linux, Java, REST APIs,
+      and networking, focused on application troubleshooting, debugging, and database validation.
+      Experienced in API testing with Postman, Linux command-line operations, and issue analysis
+      through academic projects and internships. Seeking an entry-level Application Support Engineer
+      / Technical Support Engineer role to apply problem-solving and technical support skills.
+    </p>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <span class="section-tag">capability matrix</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Application Support</p>
+        <div class="chip-row">
+          <span class="chip">Troubleshooting</span><span class="chip">Issue Analysis</span>
+          <span class="chip">Debugging</span><span class="chip">Log Analysis</span>
+          <span class="chip">Incident Mgmt Basics</span><span class="chip">Root Cause Analysis</span>
         </div>
-    </header>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Database &amp; SQL</p>
+        <div class="chip-row">
+          <span class="chip">SQL</span><span class="chip">SQLite</span><span class="chip">MySQL</span>
+          <span class="chip">CRUD</span><span class="chip">JOINs</span><span class="chip">Subqueries</span>
+          <span class="chip">GROUP BY</span><span class="chip">Aggregate Fns</span><span class="chip">Data Validation</span>
+        </div>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Linux &amp; Operating Systems</p>
+        <div class="chip-row">
+          <span class="chip">Linux Basics</span><span class="chip">Windows</span>
+          <span class="chip">File/Directory Mgmt</span><span class="chip">Permissions Basics</span>
+          <span class="chip">Process Mgmt</span><span class="chip">Command Line</span>
+        </div>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Networking</p>
+        <div class="chip-row">
+          <span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">HTTP/HTTPS</span>
+          <span class="chip">IP Addressing</span><span class="chip">Ports</span>
+          <span class="chip">Client-Server Arch</span><span class="chip">Network Troubleshooting</span>
+        </div>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Programming</p>
+        <div class="chip-row">
+          <span class="chip">Core Java</span><span class="chip">Python Basics</span><span class="chip">C Basics</span>
+        </div>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>API</p>
+        <div class="chip-row">
+          <span class="chip">REST APIs</span><span class="chip">HTTP Methods</span>
+          <span class="chip">JSON</span><span class="chip">Postman</span>
+        </div>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Tools</p>
+        <div class="chip-row">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Postman</span>
+          <span class="chip">VS Code</span><span class="chip">Eclipse</span><span class="chip">IntelliJ IDEA</span>
+          <span class="chip">Termux</span>
+        </div>
+      </div>
+      <div class="skill-panel">
+        <p class="skill-cat"><span class="dot"></span>Core Concepts</p>
+        <div class="chip-row">
+          <span class="chip">OOP</span><span class="chip">DBMS</span><span class="chip">Operating Systems</span>
+          <span class="chip">Computer Networks</span><span class="chip">DSA Basics</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <main>
-        <section id="home" class="hero" aria-labelledby="hero-title">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 id="hero-title" class="hero-title">Sandeep Chenji</h1>
-                    <p class="hero-subtitle">Computer Science Engineering Student | Java Developer | Web Development</p>
-                    <p class="hero-description">Aspiring Software Developer with strong Java, OOP, and SQL skills. Currently seeking entry-level software development roles to apply technical knowledge and problem-solving abilities.</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="https://drive.google.com/file/d/1JD_B67U5pESB6LZoBKQgxNAdS2Rr1jgh/view?usp=drivesdk" class="btn btn-secondary" download target="_blank" rel="noopener noreferrer">Download Resume</a>
-                    </div>
-                    <div class="hero-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>B.Tech CSE Student</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-code"></i>
-                            <span>Java Specialist</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-search"></i>
-                            <span>Seeking Entry-Level Roles</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <h3>Key Qualifications</h3>
-                        </div>
-                        <ul class="qualifications">
-                            <li><i class="fas fa-check-circle"></i> Strong Java & OOP Fundamentals</li>
-                            <li><i class="fas fa-check-circle"></i> SQL Database Management</li>
-                            <li><i class="fas fa-check-circle"></i> Web Development (HTML, CSS, JS)</li>
-                            <li><i class="fas fa-check-circle"></i> Problem Solving & Algorithms</li>
-                            <li><i class="fas fa-check-circle"></i> Git Version Control</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-tag">ls ./repos</span>
+    </div>
 
-        <!-- About Section -->
-        <section id="about" class="section about" aria-labelledby="about-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="about-title" class="section-title">About Me</h2>
-                    <p class="section-subtitle">Passionate Computer Science Student ready for software development challenges</p>
-                </div>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>I am a <strong>Computer Science Engineering undergraduate</strong> with strong knowledge of <strong>Java, SQL, and web technologies</strong>. I have hands-on experience developing Java applications and responsive web interfaces, along with exposure to cybersecurity practices and machine learning concepts.</p>
-                        <p>Currently seeking an <strong>entry-level Software Developer role</strong> where I can apply <strong>object-oriented programming, problem-solving skills, and software development fundamentals</strong> while continuously improving my technical expertise.</p>
-                        <div class="career-goal">
-                            <h3><i class="fas fa-bullseye"></i> Career Objective</h3>
-                            <p>To secure a challenging position in a reputable organization to expand my learnings, knowledge, and skills. Seeking a software developer role where I can contribute to team success while developing my professional skills.</p>
-                        </div>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <i class="fas fa-project-diagram"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h3>3+</h3>
-                                <p>Projects Completed</p>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h3>8+</h3>
-                                <p>Certifications</p>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h3>2</h3>
-                                <p>Internships</p>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="stat-content">
-                                <h3>120+</h3>
-                                <p>Training Hours</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Student REST API</h3>
+        <span class="status-pill">stable</span>
+      </div>
+      <p class="stack">Java · Spring Boot · REST API · MySQL · Postman</p>
+      <ul>
+        <li>Developed a REST API for managing student records using GET, POST, PUT, and DELETE methods with CRUD operations and MySQL database integration.</li>
+        <li>Tested and troubleshot API endpoints using Postman, validating requests, responses, JSON payloads, and HTTP status codes.</li>
+        <li>Debugged application and database issues, applying exception handling and input validation to improve reliability.</li>
+      </ul>
+      <a class="repo-link" href="https://github.com/Chenjisandeep/springboot-student-api">github.com/Chenjisandeep/springboot-student-api</a>
+    </div>
 
-        <!-- Skills Section - Reorganized for ATS scanning -->
-        <section id="skills" class="section skills" aria-labelledby="skills-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="skills-title" class="section-title">Technical Skills</h2>
-                    <p class="section-subtitle">Core competencies and technologies I work with</p>
-                </div>
-                <div class="skills-container">
-                    <!-- Primary Skills (Most Relevant for Jobs) -->
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Fake News Detection System</h3>
+        <span class="status-pill">stable</span>
+      </div>
+      <p class="stack">Python · NLP · Machine Learning · Flask</p>
+      <p class="desc">
+        Final-year academic project — a meta-analysis of automated fake news detection methods,
+        using a PassiveAggressiveClassifier with TF-IDF vectorization on the ISOT dataset. Reached
+        roughly 96% accuracy after diagnosing and resolving a data-leakage issue caused by Reuters
+        dateline prefixes in the source text.
+      </p>
+      <ul>
+        <li>Built and tested a Flask web application to classify news articles as real or fake.</li>
+        <li>Applied TF-IDF for text feature extraction and evaluated multiple classification models.</li>
+        <li>Performed data preprocessing, validation, testing, and troubleshooting to ensure reliable application behavior.</li>
+      </ul>
+      <a class="repo-link" href="https://github.com/Chenjisandeep/Fake-new-detection">github.com/Chenjisandeep/Fake-new-detection</a>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3 class="project-title">Employee Management System</h3>
+        <span class="status-pill">stable</span>
+      </div>
+      <p class="stack">Core Java · OOP · Collections · File Handling</p>
+      <ul>
+        <li>Built and debugged a console-based Java application for adding, updating, searching, and displaying employee records.</li>
+        <li>Applied Java Collections, file handling, and exception handling, troubleshooting application logic and data issues.</li>
+      </ul>
+      <a class="repo-link" href="https://github.com/Chenjisandeep/EmployeeManagementSystem">github.com/Chenjisandeep/EmployeeManagementSystem</a>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="section-tag">tail -f ./log</span>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-date">May – Jun 2025</div>
+      <div>
+        <p class="log-title">Java Programming Intern</p>
+        <p class="log-org">CODTECH IT SOLUTIONS — Virtual</p>
+        <ul>
+          <li>Applied Core Java, OOP, Collections, exception handling, and file I/O to build and debug practical programming tasks.</li>
+          <li>Practiced structured problem-solving and application development through hands-on coding exercises.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-date">May – Jul 2024</div>
+      <div>
+        <p class="log-title">Cyber Security Intern</p>
+        <p class="log-org">AIMER Society — Virtual</p>
+        <ul>
+          <li>Completed a 120-hour internship covering cybersecurity fundamentals, security practices, threat awareness, and basic security analysis.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+            <!-- Primary Skills (Most Relevant for Jobs) -->
                     <div class="skill-category primary-skills">
                         <h3><i class="fas fa-star"></i> Primary Skills</h3>
                         <div class="skill-items">
